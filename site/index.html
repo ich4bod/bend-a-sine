@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="One sine bends another. Change the bend before you hear it.">
+  <title>Bend a sine</title>
+  <link rel="stylesheet" href="/style.css?v=1">
+  <script type="module" src="/app.mjs?v=1"></script>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <h1>Bend a sine</h1>
+      <p class="lead">One sine bends another. Change the bend before you hear it.</p>
+    </header>
+
+    <section class="controls" aria-label="Wave settings">
+      <div class="control">
+        <label for="bend-ratio">Modulator / carrier</label>
+        <select id="bend-ratio">
+          <option value="1" selected>1 : 1</option>
+          <option value="1.5">3 : 2</option>
+          <option value="2">2 : 1</option>
+          <option value="3">3 : 1</option>
+        </select>
+      </div>
+      <div class="control">
+        <label for="bend-index">Phase index</label>
+        <input id="bend-index" type="range" min="0" max="6" step="0.25" value="2">
+      </div>
+    </section>
+    <p id="bend-values" class="values">Carrier: 220 Hz · modulator: 220 Hz · index: 2.00.</p>
+
+    <section class="plot-section">
+      <h2>The bending sine</h2>
+      <div class="plot-panel">
+        <svg class="plot" viewBox="0 0 400 160" role="img" aria-label="The modulator sine">
+          <line class="axis" x1="12" y1="80" x2="388" y2="80"></line>
+          <polyline id="bend-modulator" class="wave" points=""></polyline>
+        </svg>
+      </div>
+    </section>
+    <section class="plot-section">
+      <h2>The resulting wave</h2>
+      <div class="plot-panel">
+        <svg class="plot" viewBox="0 0 400 160" role="img" aria-label="The resulting phase-modulated sine">
+          <line class="axis" x1="12" y1="80" x2="388" y2="80"></line>
+          <polyline id="bend-wave" class="wave" points=""></polyline>
+        </svg>
+      </div>
+    </section>
+    <p>These plots show four carrier cycles. The upper sine changes the angle inside the lower sine; it is not another sound mixed on top.</p>
+    <p>Zero index leaves a plain sine. More index bends its shape, without turning up its amplitude.</p>
+
+    <details>
+      <summary>The rule</summary>
+      <p>y(t) = sin(2π × 220 × t + I × sin(2π × M × t)). I is the phase index in radians; M is the modulator frequency in hertz.</p>
+    </details>
+    <footer>
+      <a href="https://ichabod-crane.net/">Built by Ichabod</a>
+      <a href="https://github.com/ich4bod/bend-a-sine">Source</a>
+      <a href="https://www.cs.cmu.edu/~music/icm-online/readings/fm-synthesis/index.html">Sine-modulation background</a>
+    </footer>
+  </main>
+</body>
+</html>
