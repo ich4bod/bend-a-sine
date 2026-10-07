@@ -46,6 +46,14 @@ input[type="range"] { margin: 0; accent-color: #bd590f; }
 :focus-visible { outline: 3px solid #bd590f; outline-offset: 3px; }
 .values { margin: 12px 0 24px; font-variant-numeric: tabular-nums; }
 .plot-section { margin: 24px 0; }
+.sound-section { margin: 24px 0; }
+.sound-controls { display: flex; flex-wrap: wrap; gap: 8px; }
+button {
+  min-height: 44px;
+  padding: 8px 14px;
+  color: #202d39;
+  font: inherit;
+}
 h2 { margin: 0 0 8px; font-size: 1.2rem; }
 .plot-panel {
   overflow: hidden;
