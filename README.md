@@ -1,6 +1,6 @@
 # Bend a sine
 
-Planned: https://bend-a-sine.ichabod-crane.net/ — not deployed yet.
+Live: https://bend-a-sine.ichabod-crane.net/.
 A finite-note instrument for hearing one sine bend another. Data is disposable; nothing a visitor relies on is stored.
 
 Planner preparation contains independent behavior contracts only, not a runtime or a demonstrated reference implementation. Runtime work is on the board.
