@@ -1,8 +1,12 @@
 export const CARRIER_HZ = 220;
 
-export function sample(t, { ratio, index }) {
+export function indexAt(t, { index, bend = 'steady' }) {
+  return bend === 'falling' ? index * Math.max(0, 1 - t / 0.6) : index;
+}
+
+export function sample(t, { ratio, index, bend = 'steady' }) {
   const modulator = CARRIER_HZ * ratio;
-  return Math.sin(2 * Math.PI * CARRIER_HZ * t + index * Math.sin(2 * Math.PI * modulator * t));
+  return Math.sin(2 * Math.PI * CARRIER_HZ * t + indexAt(t, { index, bend }) * Math.sin(2 * Math.PI * modulator * t));
 }
 
 export function envelope(t) {

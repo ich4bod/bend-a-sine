@@ -1,7 +1,10 @@
-import { CARRIER_HZ, note, sample } from './model.mjs?v=2';
+import { CARRIER_HZ, indexAt, note, sample } from './model.mjs?v=3';
 
 const ratioControl = document.querySelector('#bend-ratio');
 const indexControl = document.querySelector('#bend-index');
+const modeControl = document.querySelector('#bend-mode');
+const momentControl = document.querySelector('#bend-moment');
+const indexHere = document.querySelector('#bend-index-here');
 const values = document.querySelector('#bend-values');
 const modulatorLine = document.querySelector('#bend-modulator');
 const waveLine = document.querySelector('#bend-wave');
@@ -28,11 +31,16 @@ function currentSettings() {
   return {
     ratio: Number(ratioControl.value),
     index: Number(indexControl.value),
+    bend: modeControl.value,
+    moment: modeControl.value === 'steady' ? 0 : Number(momentControl.value),
   };
 }
 
 function sameSettings(left, right) {
-  return left.ratio === right.ratio && left.index === right.index;
+  return left.ratio === right.ratio
+    && left.index === right.index
+    && left.bend === right.bend
+    && left.moment === right.moment;
 }
 
 function render() {
@@ -45,12 +53,14 @@ function render() {
     const t = duration * i / points;
     const x = 12 + 376 * i / points;
     modulatorPoints.push(serializePoint(x, 80 - 60 * Math.sin(2 * Math.PI * modulator * t)));
-    wavePoints.push(serializePoint(x, 80 - 60 * sample(t, settings)));
+    wavePoints.push(serializePoint(x, 80 - 60 * sample(t, { ...settings, index: indexAt(settings.moment, settings), bend: 'steady' })));
   }
 
   modulatorLine.setAttribute('points', modulatorPoints.join(' '));
   waveLine.setAttribute('points', wavePoints.join(' '));
   values.textContent = `Carrier: ${CARRIER_HZ} Hz · modulator: ${modulator} Hz · index: ${settings.index.toFixed(2)}.`;
+  indexHere.textContent = `Index here: ${indexAt(settings.moment, settings).toFixed(2)} at ${settings.moment.toFixed(2)} seconds.`;
+  momentControl.disabled = settings.bend === 'steady';
   return settings;
 }
 
@@ -69,12 +79,12 @@ function renderKept() {
   for (let i = 0; i <= points; i += 1) {
     const t = duration * i / points;
     const x = 12 + 376 * i / points;
-    keptPoints.push(serializePoint(x, 80 - 60 * sample(t, keptSettings)));
+    keptPoints.push(serializePoint(x, 80 - 60 * sample(t, { ...keptSettings, index: indexAt(keptSettings.moment, keptSettings), bend: 'steady' })));
   }
   keptWaveLine.setAttribute('points', keptPoints.join(' '));
   keptPanel.hidden = false;
   keptPlot.removeAttribute('hidden');
-  keptValues.textContent = `Kept: ratio ${keptSettings.ratio} : 1 · index ${keptSettings.index.toFixed(2)}.`;
+  keptValues.textContent = `Kept: ratio ${keptSettings.ratio} : 1 · index ${keptSettings.index.toFixed(2)} · ${keptSettings.bend} · at ${keptSettings.moment.toFixed(2)} seconds.`;
   returnButton.disabled = sameSettings(keptSettings, currentSettings());
   forgetButton.disabled = false;
   listenKeptButton.disabled = false;
@@ -172,6 +182,8 @@ returnButton.addEventListener('click', () => {
   stopSound();
   ratioControl.value = String(keptSettings.ratio);
   indexControl.value = String(keptSettings.index);
+  modeControl.value = keptSettings.bend;
+  momentControl.value = String(keptSettings.moment);
   refresh();
 });
 
@@ -184,6 +196,10 @@ ratioControl.addEventListener('input', settingsChanged);
 ratioControl.addEventListener('change', settingsChanged);
 indexControl.addEventListener('input', settingsChanged);
 indexControl.addEventListener('change', settingsChanged);
+modeControl.addEventListener('input', settingsChanged);
+modeControl.addEventListener('change', settingsChanged);
+momentControl.addEventListener('input', settingsChanged);
+momentControl.addEventListener('change', settingsChanged);
 listenButton.addEventListener('click', () => listen());
 stopButton.addEventListener('click', stopSound);
 document.addEventListener('visibilitychange', () => {

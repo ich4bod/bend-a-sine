@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="One sine bends another. Change the bend before you hear it.">
   <title>Bend a sine</title>
-  <link rel="stylesheet" href="/style.css?v=3">
-  <script type="module" src="/app.mjs?v=3"></script>
+  <link rel="stylesheet" href="/style.css?v=4">
+  <script type="module" src="/app.mjs?v=4"></script>
 </head>
 <body>
   <main class="page">
@@ -29,8 +29,25 @@
         <label for="bend-index">Phase index</label>
         <input id="bend-index" type="range" min="0" max="6" step="0.25" value="2">
       </div>
+      <div class="control">
+        <label for="bend-mode">Bend through the note</label>
+        <select id="bend-mode">
+          <option value="steady" selected>Keep the index</option>
+          <option value="falling">Let the index fall</option>
+        </select>
+      </div>
+      <div class="control">
+        <label for="bend-moment">Inspect the index at</label>
+        <select id="bend-moment" disabled>
+          <option value="0" selected>Start</option>
+          <option value="0.3">0.30 seconds</option>
+          <option value="0.6">0.60 seconds</option>
+        </select>
+      </div>
     </section>
     <p id="bend-values" class="values">Carrier: 220 Hz · modulator: 220 Hz · index: 2.00.</p>
+    <p id="bend-index-here">Index here: 2.00 at 0.00 seconds.</p>
+    <p id="bend-fall-help">The falling bend reaches zero index after 0.60 seconds. This plot freezes that instant; the heard note changes continuously. The amplitude envelope is unchanged.</p>
 
     <section class="plot-section">
       <h2>The bending sine</h2>
@@ -59,7 +76,7 @@
         <button id="bend-forget" type="button" disabled>Forget kept bend</button>
         <button id="bend-listen-kept" type="button" disabled>Hear kept bend</button>
       </div>
-      <p id="bend-keep-help">The orange wave keeps its own ratio and index. Hearing it does not change the cyan wave. Return changes the controls only; it does not play a note.</p>
+      <p id="bend-keep-help">The orange wave keeps its own ratio, index, bend mode and inspected instant. Hearing it does not change the cyan wave. Return changes the controls only; it does not play a note.</p>
       <p id="bend-kept-values">No bend kept.</p>
       <div id="bend-kept-panel" class="plot-panel" hidden>
         <svg id="bend-kept-plot" class="plot" viewBox="0 0 400 160" role="img" aria-label="The kept phase-modulated sine" hidden>
