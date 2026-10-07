@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="One sine bends another. Change the bend before you hear it.">
   <title>Bend a sine</title>
-  <link rel="stylesheet" href="/style.css?v=2">
-  <script type="module" src="/app.mjs?v=2"></script>
+  <link rel="stylesheet" href="/style.css?v=3">
+  <script type="module" src="/app.mjs?v=3"></script>
 </head>
 <body>
   <main class="page">
@@ -50,6 +50,24 @@
         </svg>
       </div>
     </section>
+
+    <fieldset class="keep-section">
+      <legend>Keep a comparison</legend>
+      <div class="keep-controls">
+        <button id="bend-keep" type="button">Keep this bend</button>
+        <button id="bend-return" type="button" disabled>Return to kept bend</button>
+        <button id="bend-forget" type="button" disabled>Forget kept bend</button>
+        <button id="bend-listen-kept" type="button" disabled>Hear kept bend</button>
+      </div>
+      <p id="bend-keep-help">The orange wave keeps its own ratio and index. Hearing it does not change the cyan wave. Return changes the controls only; it does not play a note.</p>
+      <p id="bend-kept-values">No bend kept.</p>
+      <div id="bend-kept-panel" class="plot-panel" hidden>
+        <svg id="bend-kept-plot" class="plot" viewBox="0 0 400 160" role="img" aria-label="The kept phase-modulated sine" hidden>
+          <line class="axis" x1="12" y1="80" x2="388" y2="80"></line>
+          <polyline id="bend-kept-wave" class="wave wave-kept" points=""></polyline>
+        </svg>
+      </div>
+    </fieldset>
 
     <section class="sound-section" aria-labelledby="bend-sound-heading">
       <h2 id="bend-sound-heading">Hear the bend</h2>

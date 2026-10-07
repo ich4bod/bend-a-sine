@@ -47,6 +47,17 @@ input[type="range"] { margin: 0; accent-color: #bd590f; }
 .values { margin: 12px 0 24px; font-variant-numeric: tabular-nums; }
 .plot-section { margin: 24px 0; }
 .sound-section { margin: 24px 0; }
+.keep-section {
+  min-width: 0;
+  margin: 24px 0;
+  padding: 16px;
+  border: 1px solid #64747d;
+  border-radius: 8px;
+}
+.keep-section legend { padding-inline: 4px; font-weight: 650; }
+.keep-controls { display: flex; flex-wrap: wrap; gap: 8px; }
+#bend-kept-values { font-variant-numeric: tabular-nums; }
+.wave.wave-kept { stroke: #efa562; }
 .sound-controls { display: flex; flex-wrap: wrap; gap: 8px; }
 button {
   min-height: 44px;
