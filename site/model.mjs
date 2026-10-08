@@ -1,7 +1,9 @@
 export const CARRIER_HZ = 220;
 
 export function indexAt(t, { index, bend = 'steady' }) {
-  return bend === 'falling' ? index * Math.max(0, 1 - t / 0.6) : index;
+  if (bend === 'falling') return index * Math.max(0, 1 - t / 0.6);
+  if (bend === 'rising') return index * Math.min(1, Math.max(0, t / 0.6));
+  return index;
 }
 
 export function sample(t, { ratio, index, bend = 'steady' }) {

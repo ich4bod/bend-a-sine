@@ -6,7 +6,7 @@
   <meta name="description" content="One sine bends another. Change the bend before you hear it.">
   <title>Bend a sine</title>
   <link rel="stylesheet" href="/style.css?v=8">
-  <script type="module" src="/app.mjs?v=9"></script>
+  <script type="module" src="/app.mjs?v=10"></script>
 </head>
 <body>
   <main class="page">
@@ -34,6 +34,7 @@
         <select id="bend-mode">
           <option value="steady" selected>Keep the index</option>
           <option value="falling">Let the index fall</option>
+          <option value="rising">Let the index rise</option>
         </select>
       </div>
       <div class="control">
@@ -59,7 +60,7 @@
       <p id="bend-sound-help">Each press plays one 0.8-second note. Changing a control stops it; changing a control never plays it. Start with your volume low.</p>
       <p id="bend-sources-help">These are separate notes, not a mixture. The bending sine changes an angle in the resulting sound.</p>
     </section>
-    <p id="bend-fall-help">The falling bend reaches zero index after 0.60 seconds. This plot freezes that instant; the heard note changes continuously. The amplitude envelope is unchanged.</p>
+    <p id="bend-fall-help">A falling bend reaches zero index after 0.60 seconds; a rising bend reaches the chosen index then. This plot freezes that instant; the heard note changes continuously. The amplitude envelope is unchanged.</p>
 
     <section class="plot-section">
       <h2>The bending sine</h2>

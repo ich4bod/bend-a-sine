@@ -1,4 +1,4 @@
-import { CARRIER_HZ, indexAt, note, plainNote, sample } from './model.mjs?v=4';
+import { CARRIER_HZ, indexAt, note, plainNote, sample } from './model.mjs?v=5';
 
 const ratioControl = document.querySelector('#bend-ratio');
 const indexControl = document.querySelector('#bend-index');
