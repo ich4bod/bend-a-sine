@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="One sine bends another. Change the bend before you hear it.">
   <title>Bend a sine</title>
-  <link rel="stylesheet" href="/style.css?v=4">
-  <script type="module" src="/app.mjs?v=4"></script>
+  <link rel="stylesheet" href="/style.css?v=5">
+  <script type="module" src="/app.mjs?v=5"></script>
 </head>
 <body>
   <main class="page">
@@ -90,10 +90,13 @@
       <h2 id="bend-sound-heading">Hear the bend</h2>
       <div class="sound-controls">
         <button id="bend-listen" type="button">Hear this bend</button>
+        <button id="bend-listen-carrier" type="button">Hear plain carrier</button>
+        <button id="bend-listen-modulator" type="button">Hear bending sine</button>
         <button id="bend-stop" type="button" disabled>Stop sound</button>
       </div>
       <p id="bend-sound-status">Ready.</p>
       <p id="bend-sound-help">Each press plays one 0.8-second note. Changing a control stops it; changing a control never plays it. Start with your volume low.</p>
+      <p id="bend-sources-help">These are separate notes, not a mixture. The bending sine changes an angle in the resulting sound.</p>
     </section>
 
     <p>These plots show four carrier cycles. The upper sine changes the angle inside the lower sine; it is not another sound mixed on top.</p>

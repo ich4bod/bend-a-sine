@@ -1,4 +1,4 @@
-import { CARRIER_HZ, indexAt, note, sample } from './model.mjs?v=3';
+import { CARRIER_HZ, indexAt, note, plainNote, sample } from './model.mjs?v=4';
 
 const ratioControl = document.querySelector('#bend-ratio');
 const indexControl = document.querySelector('#bend-index');
@@ -9,6 +9,8 @@ const values = document.querySelector('#bend-values');
 const modulatorLine = document.querySelector('#bend-modulator');
 const waveLine = document.querySelector('#bend-wave');
 const listenButton = document.querySelector('#bend-listen');
+const listenCarrierButton = document.querySelector('#bend-listen-carrier');
+const listenModulatorButton = document.querySelector('#bend-listen-modulator');
 const stopButton = document.querySelector('#bend-stop');
 const soundStatus = document.querySelector('#bend-sound-status');
 const keepButton = document.querySelector('#bend-keep');
@@ -127,7 +129,7 @@ function stopSound() {
   stopButton.disabled = true;
 }
 
-async function listen(settings = currentSettings()) {
+async function listen(settings = currentSettings(), sourceFrequency = null) {
   stopSound();
   const request = playbackRequest;
   try {
@@ -135,7 +137,9 @@ async function listen(settings = currentSettings()) {
     await audioContext.resume();
     if (request !== playbackRequest || document.hidden) return;
 
-    const samples = note(settings, audioContext.sampleRate);
+    const samples = sourceFrequency === null
+      ? note(settings, audioContext.sampleRate)
+      : plainNote(sourceFrequency, audioContext.sampleRate);
     const buffer = audioContext.createBuffer(1, samples.length, audioContext.sampleRate);
     buffer.copyToChannel(samples, 0);
     const source = audioContext.createBufferSource();
@@ -201,6 +205,8 @@ modeControl.addEventListener('change', settingsChanged);
 momentControl.addEventListener('input', settingsChanged);
 momentControl.addEventListener('change', settingsChanged);
 listenButton.addEventListener('click', () => listen());
+listenCarrierButton.addEventListener('click', () => listen(undefined, CARRIER_HZ));
+listenModulatorButton.addEventListener('click', () => listen(undefined, CARRIER_HZ * Number(ratioControl.value)));
 stopButton.addEventListener('click', stopSound);
 document.addEventListener('visibilitychange', () => {
   if (document.hidden) stopSound();
