@@ -86,6 +86,7 @@ h2 { margin: 0 0 8px; font-size: 1.2rem; }
 p { margin: 12px 0; }
 details { margin-top: 24px; }
 summary { cursor: pointer; }
+#bend-memory > summary { min-height: 44px; padding-block: 8px; }
 details p { margin: 8px 0; }
 footer {
   display: flex;

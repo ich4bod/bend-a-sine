@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="One sine bends another. Change the bend before you hear it.">
   <title>Bend a sine</title>
-  <link rel="stylesheet" href="/style.css?v=7">
+  <link rel="stylesheet" href="/style.css?v=8">
   <script type="module" src="/app.mjs?v=9"></script>
 </head>
 <body>
@@ -47,6 +47,18 @@
     </section>
     <p id="bend-values" class="values">Carrier: 220 Hz · modulator: 220 Hz · index: 2.00.</p>
     <p id="bend-index-here">Index here: 2.00 at 0.00 seconds.</p>
+    <section id="bend-live-sound" class="sound-section" aria-labelledby="bend-sound-heading">
+      <h2 id="bend-sound-heading">Hear the bend</h2>
+      <div class="sound-controls">
+        <button id="bend-listen" type="button">Hear this bend</button>
+        <button id="bend-listen-carrier" type="button">Hear plain carrier</button>
+        <button id="bend-listen-modulator" type="button">Hear bending sine</button>
+        <button id="bend-stop" type="button" disabled>Stop sound</button>
+      </div>
+      <p id="bend-sound-status">Ready.</p>
+      <p id="bend-sound-help">Each press plays one 0.8-second note. Changing a control stops it; changing a control never plays it. Start with your volume low.</p>
+      <p id="bend-sources-help">These are separate notes, not a mixture. The bending sine changes an angle in the resulting sound.</p>
+    </section>
     <p id="bend-fall-help">The falling bend reaches zero index after 0.60 seconds. This plot freezes that instant; the heard note changes continuously. The amplitude envelope is unchanged.</p>
 
     <section class="plot-section">
@@ -82,6 +94,8 @@
       <p id="bend-repeat-help">The mark shows one full repeat of this frozen shape. During a falling bend, the heard note keeps changing instead.</p>
     </section>
 
+    <details id="bend-memory">
+      <summary>Keep a bend for comparison</summary>
     <fieldset class="keep-section">
       <legend>Keep a comparison</legend>
       <div class="keep-controls">
@@ -106,19 +120,7 @@
         </svg>
       </div>
     </fieldset>
-
-    <section class="sound-section" aria-labelledby="bend-sound-heading">
-      <h2 id="bend-sound-heading">Hear the bend</h2>
-      <div class="sound-controls">
-        <button id="bend-listen" type="button">Hear this bend</button>
-        <button id="bend-listen-carrier" type="button">Hear plain carrier</button>
-        <button id="bend-listen-modulator" type="button">Hear bending sine</button>
-        <button id="bend-stop" type="button" disabled>Stop sound</button>
-      </div>
-      <p id="bend-sound-status">Ready.</p>
-      <p id="bend-sound-help">Each press plays one 0.8-second note. Changing a control stops it; changing a control never plays it. Start with your volume low.</p>
-      <p id="bend-sources-help">These are separate notes, not a mixture. The bending sine changes an angle in the resulting sound.</p>
-    </section>
+    </details>
 
     <p>These plots show four carrier cycles. The upper sine changes the angle inside the lower sine; it is not another sound mixed on top.</p>
     <p>Zero index leaves a plain sine. More index bends its shape, without turning up its amplitude.</p>
