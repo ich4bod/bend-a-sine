@@ -6,7 +6,7 @@
   <meta name="description" content="One sine bends another. Change the bend before you hear it.">
   <title>Bend a sine</title>
   <link rel="stylesheet" href="/style.css?v=6">
-  <script type="module" src="/app.mjs?v=7"></script>
+  <script type="module" src="/app.mjs?v=8"></script>
 </head>
 <body>
   <main class="page">
@@ -88,7 +88,9 @@
         <button id="bend-return" type="button" disabled>Return to kept bend</button>
         <button id="bend-forget" type="button" disabled>Forget kept bend</button>
         <button id="bend-listen-kept" type="button" disabled>Hear kept bend</button>
+        <button id="bend-compare-play" type="button" disabled>Hear kept, then current</button>
       </div>
+      <p id="bend-compare-help">Two 0.8-second notes with 0.25 seconds of silence between. Each keeps the same amplitude envelope. Stop ends the whole comparison.</p>
       <p id="bend-keep-help">The orange wave keeps its own ratio, index, bend mode and inspected instant. Hearing it does not change the cyan wave. Return changes the controls only; it does not play a note.</p>
       <p id="bend-kept-values">No bend kept.</p>
       <div id="bend-kept-panel" class="plot-panel" hidden>

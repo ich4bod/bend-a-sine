@@ -22,6 +22,7 @@ const keepButton = document.querySelector('#bend-keep');
 const returnButton = document.querySelector('#bend-return');
 const forgetButton = document.querySelector('#bend-forget');
 const listenKeptButton = document.querySelector('#bend-listen-kept');
+const comparePlayButton = document.querySelector('#bend-compare-play');
 const keptPlot = document.querySelector('#bend-kept-plot');
 const keptPanel = document.querySelector('#bend-kept-panel');
 const keptWaveLine = document.querySelector('#bend-kept-wave');
@@ -99,6 +100,7 @@ function renderKept() {
     returnButton.disabled = true;
     forgetButton.disabled = true;
     listenKeptButton.disabled = true;
+    comparePlayButton.disabled = true;
     return;
   }
 
@@ -115,6 +117,7 @@ function renderKept() {
   returnButton.disabled = sameSettings(keptSettings, currentSettings());
   forgetButton.disabled = false;
   listenKeptButton.disabled = false;
+  comparePlayButton.disabled = false;
 }
 
 function refresh() {
@@ -154,17 +157,16 @@ function stopSound() {
   stopButton.disabled = true;
 }
 
-async function listen(settings = currentSettings(), sourceFrequency = null) {
+async function playSound(samplesAtRate, status) {
   stopSound();
   const request = playbackRequest;
+  stopButton.disabled = false;
   try {
     if (!audioContext) audioContext = new AudioContext();
     await audioContext.resume();
     if (request !== playbackRequest || document.hidden) return;
 
-    const samples = sourceFrequency === null
-      ? note(settings, audioContext.sampleRate)
-      : plainNote(sourceFrequency, audioContext.sampleRate);
+    const samples = samplesAtRate(audioContext.sampleRate);
     const buffer = audioContext.createBuffer(1, samples.length, audioContext.sampleRate);
     buffer.copyToChannel(samples, 0);
     const source = audioContext.createBufferSource();
@@ -179,7 +181,7 @@ async function listen(settings = currentSettings(), sourceFrequency = null) {
       stopButton.disabled = true;
     };
     activeSource = source;
-    soundStatus.textContent = 'Playing one note.';
+    soundStatus.textContent = status;
     stopButton.disabled = false;
     source.start();
   } catch {
@@ -201,6 +203,25 @@ async function listen(settings = currentSettings(), sourceFrequency = null) {
   }
 }
 
+function listen(settings = currentSettings(), sourceFrequency = null) {
+  const snapshot = { ...settings };
+  return playSound(rate => sourceFrequency === null
+    ? note(snapshot, rate)
+    : plainNote(sourceFrequency, rate), 'Playing one note.');
+}
+
+function compareNotes() {
+  if (!keptSettings) return;
+  const kept = { ...keptSettings };
+  const current = { ...currentSettings() };
+  return playSound(rate => {
+    const samples = new Float32Array(Math.round(1.85 * rate));
+    samples.set(note(kept, rate), 0);
+    samples.set(note(current, rate), Math.round(1.05 * rate));
+    return samples;
+  }, 'Playing kept then current.');
+}
+
 function settingsChanged() {
   stopSound();
   refresh();
@@ -220,6 +241,8 @@ listenKeptButton.addEventListener('click', () => {
   if (!keptSettings) return;
   listen({ ...keptSettings });
 });
+
+comparePlayButton.addEventListener('click', compareNotes);
 
 ratioControl.addEventListener('input', settingsChanged);
 ratioControl.addEventListener('change', settingsChanged);
