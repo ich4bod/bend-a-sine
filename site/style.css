@@ -46,15 +46,15 @@ input[type="range"] { margin: 0; accent-color: #bd590f; }
 :focus-visible { outline: 3px solid #bd590f; outline-offset: 3px; }
 .values { margin: 12px 0 24px; font-variant-numeric: tabular-nums; }
 .plot-section { margin: 24px 0; }
-.carrier-control { display: flex; align-items: center; gap: 8px; }
-#bend-show-carrier {
+.carrier-control, .overlay-control { display: flex; align-items: center; gap: 8px; }
+#bend-show-carrier, #bend-overlay-kept {
   width: 44px;
   height: 44px;
   flex: 0 0 44px;
   margin: 0;
   accent-color: #bd590f;
 }
-#bend-carrier-wave[hidden] { display: none !important; }
+#bend-carrier-wave[hidden], #bend-overlay-wave[hidden] { display: none !important; }
 .sound-section { margin: 24px 0; }
 .keep-section {
   min-width: 0;

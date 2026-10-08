@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="One sine bends another. Change the bend before you hear it.">
   <title>Bend a sine</title>
-  <link rel="stylesheet" href="/style.css?v=6">
-  <script type="module" src="/app.mjs?v=8"></script>
+  <link rel="stylesheet" href="/style.css?v=7">
+  <script type="module" src="/app.mjs?v=9"></script>
 </head>
 <body>
   <main class="page">
@@ -70,6 +70,7 @@
           <line class="axis" x1="12" y1="80" x2="388" y2="80"></line>
           <polyline id="bend-carrier-wave" fill="none" stroke="#ede6d8" stroke-width="1.5" stroke-dasharray="5 4" points="" hidden></polyline>
           <polyline id="bend-wave" class="wave" points=""></polyline>
+          <polyline id="bend-overlay-wave" fill="none" stroke="#efa562" stroke-width="2" stroke-dasharray="6 4" points="" hidden></polyline>
           <g id="bend-repeat-marker" stroke="#efa562" stroke-width="2" fill="none">
             <line id="bend-repeat-line" x1="12" y1="145" x2="106" y2="145"></line>
             <line id="bend-repeat-start" x1="12" y1="141" x2="12" y2="149"></line>
@@ -93,6 +94,11 @@
       <p id="bend-compare-help">Two 0.8-second notes with 0.25 seconds of silence between. Each keeps the same amplitude envelope. Stop ends the whole comparison.</p>
       <p id="bend-keep-help">The orange wave keeps its own ratio, index, bend mode and inspected instant. Hearing it does not change the cyan wave. Return changes the controls only; it does not play a note.</p>
       <p id="bend-kept-values">No bend kept.</p>
+      <label class="overlay-control" for="bend-overlay-kept">
+        <input id="bend-overlay-kept" type="checkbox" disabled>
+        Show kept shape on the current plot
+      </label>
+      <p id="bend-overlay-help">The dashed orange line keeps its own frozen instant. Both shapes use the same four carrier cycles; showing it does not play either note.</p>
       <div id="bend-kept-panel" class="plot-panel" hidden>
         <svg id="bend-kept-plot" class="plot" viewBox="0 0 400 160" role="img" aria-label="The kept phase-modulated sine" hidden>
           <line class="axis" x1="12" y1="80" x2="388" y2="80"></line>

@@ -27,6 +27,8 @@ const keptPlot = document.querySelector('#bend-kept-plot');
 const keptPanel = document.querySelector('#bend-kept-panel');
 const keptWaveLine = document.querySelector('#bend-kept-wave');
 const keptValues = document.querySelector('#bend-kept-values');
+const overlayKeptControl = document.querySelector('#bend-overlay-kept');
+const overlayWaveLine = document.querySelector('#bend-overlay-wave');
 let keptSettings = null;
 const points = 400;
 const duration = 4 / CARRIER_HZ;
@@ -92,8 +94,13 @@ function render() {
   return settings;
 }
 
+overlayKeptControl.addEventListener('change', renderKept);
+
 function renderKept() {
+  overlayKeptControl.disabled = !keptSettings;
   if (!keptSettings) {
+    overlayKeptControl.checked = false;
+    overlayWaveLine.setAttribute('hidden', '');
     keptPanel.hidden = true;
     keptPlot.setAttribute('hidden', '');
     keptValues.textContent = 'No bend kept.';
@@ -110,7 +117,10 @@ function renderKept() {
     const x = 12 + 376 * i / points;
     keptPoints.push(serializePoint(x, 80 - 60 * sample(t, { ...keptSettings, index: indexAt(keptSettings.moment, keptSettings), bend: 'steady' })));
   }
-  keptWaveLine.setAttribute('points', keptPoints.join(' '));
+  const serializedPoints = keptPoints.join(' ');
+  keptWaveLine.setAttribute('points', serializedPoints);
+  overlayWaveLine.setAttribute('points', serializedPoints);
+  overlayWaveLine.toggleAttribute('hidden', !overlayKeptControl.checked);
   keptPanel.hidden = false;
   keptPlot.removeAttribute('hidden');
   keptValues.textContent = `Kept: ratio ${keptSettings.ratio} : 1 · index ${keptSettings.index.toFixed(2)} · ${keptSettings.bend} · at ${keptSettings.moment.toFixed(2)} seconds.`;
