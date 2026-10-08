@@ -8,6 +8,8 @@ const indexHere = document.querySelector('#bend-index-here');
 const values = document.querySelector('#bend-values');
 const modulatorLine = document.querySelector('#bend-modulator');
 const waveLine = document.querySelector('#bend-wave');
+const carrierLine = document.querySelector('#bend-carrier-wave');
+const showCarrierControl = document.querySelector('#bend-show-carrier');
 const listenButton = document.querySelector('#bend-listen');
 const listenCarrierButton = document.querySelector('#bend-listen-carrier');
 const listenModulatorButton = document.querySelector('#bend-listen-modulator');
@@ -28,6 +30,17 @@ const duration = 4 / CARRIER_HZ;
 function serializePoint(x, y) {
   return `${x.toFixed(9)},${y.toFixed(9)}`;
 }
+
+const carrierPoints = [];
+for (let i = 0; i <= points; i += 1) {
+  const t = duration * i / points;
+  const x = 12 + 376 * i / points;
+  carrierPoints.push(serializePoint(x, 80 - 60 * Math.sin(2 * Math.PI * CARRIER_HZ * t)));
+}
+carrierLine.setAttribute('points', carrierPoints.join(' '));
+showCarrierControl.addEventListener('change', () => {
+  carrierLine.toggleAttribute('hidden', !showCarrierControl.checked);
+});
 
 function currentSettings() {
   return {

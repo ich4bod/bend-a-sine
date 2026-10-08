@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="One sine bends another. Change the bend before you hear it.">
   <title>Bend a sine</title>
-  <link rel="stylesheet" href="/style.css?v=5">
-  <script type="module" src="/app.mjs?v=5"></script>
+  <link rel="stylesheet" href="/style.css?v=6">
+  <script type="module" src="/app.mjs?v=6"></script>
 </head>
 <body>
   <main class="page">
@@ -60,9 +60,15 @@
     </section>
     <section class="plot-section">
       <h2>The resulting wave</h2>
+      <label class="carrier-control" for="bend-show-carrier">
+        <input id="bend-show-carrier" type="checkbox">
+        Show the plain carrier
+      </label>
+      <p id="bend-carrier-help">The dashed line is the plain carrier on the same scale. At zero index, the resulting wave lies on it.</p>
       <div class="plot-panel">
         <svg class="plot" viewBox="0 0 400 160" role="img" aria-label="The resulting phase-modulated sine">
           <line class="axis" x1="12" y1="80" x2="388" y2="80"></line>
+          <polyline id="bend-carrier-wave" fill="none" stroke="#ede6d8" stroke-width="1.5" stroke-dasharray="5 4" points="" hidden></polyline>
           <polyline id="bend-wave" class="wave" points=""></polyline>
         </svg>
       </div>
