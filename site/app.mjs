@@ -1,6 +1,8 @@
-import { CARRIER_HZ, indexAt, note, plainNote, sample } from './model.mjs?v=5';
+import { CARRIER_HZ, indexAt, note, plainNote, sample } from './model.mjs?v=6';
 
 const ratioControl = document.querySelector('#bend-ratio');
+const phaseControl = document.querySelector('#bend-phase');
+const keptPhase = document.querySelector('#bend-kept-phase');
 const indexControl = document.querySelector('#bend-index');
 const modeControl = document.querySelector('#bend-mode');
 const momentControl = document.querySelector('#bend-moment');
@@ -51,6 +53,7 @@ showCarrierControl.addEventListener('change', () => {
 function currentSettings() {
   return {
     ratio: Number(ratioControl.value),
+    phase: Number(phaseControl.value),
     index: Number(indexControl.value),
     bend: modeControl.value,
     moment: modeControl.value === 'steady' ? 0 : Number(momentControl.value),
@@ -59,6 +62,7 @@ function currentSettings() {
 
 function sameSettings(left, right) {
   return left.ratio === right.ratio
+    && (left.phase ?? 0) === (right.phase ?? 0)
     && left.index === right.index
     && left.bend === right.bend
     && left.moment === right.moment;
@@ -82,7 +86,7 @@ function render() {
   for (let i = 0; i <= points; i += 1) {
     const t = duration * i / points;
     const x = 12 + 376 * i / points;
-    modulatorPoints.push(serializePoint(x, 80 - 60 * Math.sin(2 * Math.PI * modulator * t)));
+    modulatorPoints.push(serializePoint(x, 80 - 60 * Math.sin(2 * Math.PI * modulator * t + 2 * Math.PI * settings.phase)));
     wavePoints.push(serializePoint(x, 80 - 60 * sample(t, { ...settings, index: indexAt(settings.moment, settings), bend: 'steady' })));
   }
 
@@ -104,6 +108,7 @@ function renderKept() {
     keptPanel.hidden = true;
     keptPlot.setAttribute('hidden', '');
     keptValues.textContent = 'No bend kept.';
+    keptPhase.textContent = 'No source phase kept.';
     returnButton.disabled = true;
     forgetButton.disabled = true;
     listenKeptButton.disabled = true;
@@ -124,6 +129,7 @@ function renderKept() {
   keptPanel.hidden = false;
   keptPlot.removeAttribute('hidden');
   keptValues.textContent = `Kept: ratio ${keptSettings.ratio} : 1 · index ${keptSettings.index.toFixed(2)} · ${keptSettings.bend} · at ${keptSettings.moment.toFixed(2)} seconds.`;
+  keptPhase.textContent = `Kept source phase: ${keptSettings.phase ?? 0} cycles.`;
   returnButton.disabled = sameSettings(keptSettings, currentSettings());
   forgetButton.disabled = false;
   listenKeptButton.disabled = false;
@@ -213,11 +219,11 @@ async function playSound(samplesAtRate, status) {
   }
 }
 
-function listen(settings = currentSettings(), sourceFrequency = null) {
+function listen(settings = currentSettings(), sourceFrequency = null, sourcePhase = 0) {
   const snapshot = { ...settings };
   return playSound(rate => sourceFrequency === null
     ? note(snapshot, rate)
-    : plainNote(sourceFrequency, rate), 'Playing one note.');
+    : plainNote(sourceFrequency, rate, sourcePhase), 'Playing one note.');
 }
 
 function compareNotes() {
@@ -241,6 +247,7 @@ returnButton.addEventListener('click', () => {
   if (!keptSettings || sameSettings(keptSettings, currentSettings())) return;
   stopSound();
   ratioControl.value = String(keptSettings.ratio);
+  phaseControl.value = String(keptSettings.phase ?? 0);
   indexControl.value = String(keptSettings.index);
   modeControl.value = keptSettings.bend;
   momentControl.value = String(keptSettings.moment);
@@ -256,6 +263,8 @@ comparePlayButton.addEventListener('click', compareNotes);
 
 ratioControl.addEventListener('input', settingsChanged);
 ratioControl.addEventListener('change', settingsChanged);
+phaseControl.addEventListener('input', settingsChanged);
+phaseControl.addEventListener('change', settingsChanged);
 indexControl.addEventListener('input', settingsChanged);
 indexControl.addEventListener('change', settingsChanged);
 modeControl.addEventListener('input', settingsChanged);
@@ -264,7 +273,7 @@ momentControl.addEventListener('input', settingsChanged);
 momentControl.addEventListener('change', settingsChanged);
 listenButton.addEventListener('click', () => listen());
 listenCarrierButton.addEventListener('click', () => listen(undefined, CARRIER_HZ));
-listenModulatorButton.addEventListener('click', () => listen(undefined, CARRIER_HZ * Number(ratioControl.value)));
+listenModulatorButton.addEventListener('click', () => listen(undefined, CARRIER_HZ * Number(ratioControl.value), Number(phaseControl.value)));
 stopButton.addEventListener('click', stopSound);
 document.addEventListener('visibilitychange', () => {
   if (document.hidden) stopSound();

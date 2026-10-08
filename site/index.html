@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="One sine bends another. Change the bend before you hear it.">
   <title>Bend a sine</title>
-  <link rel="stylesheet" href="/style.css?v=8">
-  <script type="module" src="/app.mjs?v=10"></script>
+  <link rel="stylesheet" href="/style.css?v=9">
+  <script type="module" src="/app.mjs?v=11"></script>
 </head>
 <body>
   <main class="page">
@@ -24,6 +24,16 @@
           <option value="2">2 : 1</option>
           <option value="3">3 : 1</option>
         </select>
+      </div>
+      <div class="control">
+        <label for="bend-phase">Bending source starts at</label>
+        <select id="bend-phase">
+          <option value="0" selected>0 cycles</option>
+          <option value="0.25">¼ cycle</option>
+          <option value="0.5">½ cycle</option>
+          <option value="0.75">¾ cycle</option>
+        </select>
+        <p class="control-help">This shifts the bending sine, not its frequency. The carrier still starts at zero phase.</p>
       </div>
       <div class="control">
         <label for="bend-index">Phase index</label>
@@ -109,6 +119,7 @@
       <p id="bend-compare-help">Two 0.8-second notes with 0.25 seconds of silence between. Each keeps the same amplitude envelope. Stop ends the whole comparison.</p>
       <p id="bend-keep-help">The orange wave keeps its own ratio, index, bend mode and inspected instant. Hearing it does not change the cyan wave. Return changes the controls only; it does not play a note.</p>
       <p id="bend-kept-values">No bend kept.</p>
+      <p id="bend-kept-phase">No source phase kept.</p>
       <label class="overlay-control" for="bend-overlay-kept">
         <input id="bend-overlay-kept" type="checkbox" disabled>
         Show kept shape on the current plot
