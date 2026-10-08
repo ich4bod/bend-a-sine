@@ -18,6 +18,7 @@ const showCarrierControl = document.querySelector('#bend-show-carrier');
 const listenButton = document.querySelector('#bend-listen');
 const listenCarrierButton = document.querySelector('#bend-listen-carrier');
 const listenModulatorButton = document.querySelector('#bend-listen-modulator');
+const comparePlainButton = document.querySelector('#bend-compare-plain');
 const stopButton = document.querySelector('#bend-stop');
 const soundStatus = document.querySelector('#bend-sound-status');
 const keepButton = document.querySelector('#bend-keep');
@@ -238,6 +239,16 @@ function compareNotes() {
   }, 'Playing kept then current.');
 }
 
+function comparePlainThenCurrent() {
+  const current = { ...currentSettings() };
+  return playSound(rate => {
+    const samples = new Float32Array(Math.round(1.85 * rate));
+    samples.set(plainNote(CARRIER_HZ, rate), 0);
+    samples.set(note(current, rate), Math.round(1.05 * rate));
+    return samples;
+  }, 'Playing plain then bent.');
+}
+
 function settingsChanged() {
   stopSound();
   refresh();
@@ -260,6 +271,7 @@ listenKeptButton.addEventListener('click', () => {
 });
 
 comparePlayButton.addEventListener('click', compareNotes);
+comparePlainButton.addEventListener('click', comparePlainThenCurrent);
 
 ratioControl.addEventListener('input', settingsChanged);
 ratioControl.addEventListener('change', settingsChanged);

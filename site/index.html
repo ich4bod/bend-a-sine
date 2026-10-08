@@ -6,7 +6,7 @@
   <meta name="description" content="One sine bends another. Change the bend before you hear it.">
   <title>Bend a sine</title>
   <link rel="stylesheet" href="/style.css?v=9">
-  <script type="module" src="/app.mjs?v=11"></script>
+  <script type="module" src="/app.mjs?v=12"></script>
 </head>
 <body>
   <main class="page">
@@ -64,8 +64,10 @@
         <button id="bend-listen" type="button">Hear this bend</button>
         <button id="bend-listen-carrier" type="button">Hear plain carrier</button>
         <button id="bend-listen-modulator" type="button">Hear bending sine</button>
+        <button id="bend-compare-plain" type="button">Hear plain, then this bend</button>
         <button id="bend-stop" type="button" disabled>Stop sound</button>
       </div>
+      <p id="bend-compare-plain-help">First the plain carrier, then a short silence, then this bend. Both notes use the same loudness envelope.</p>
       <p id="bend-sound-status">Ready.</p>
       <p id="bend-sound-help">Each press plays one 0.8-second note. Changing a control stops it; changing a control never plays it. Start with your volume low.</p>
       <p id="bend-sources-help">These are separate notes, not a mixture. The bending sine changes an angle in the resulting sound.</p>
