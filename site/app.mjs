@@ -8,6 +8,9 @@ const indexHere = document.querySelector('#bend-index-here');
 const values = document.querySelector('#bend-values');
 const modulatorLine = document.querySelector('#bend-modulator');
 const waveLine = document.querySelector('#bend-wave');
+const repeatLine = document.querySelector('#bend-repeat-line');
+const repeatEnd = document.querySelector('#bend-repeat-end');
+const repeatReadout = document.querySelector('#bend-repeat-readout');
 const carrierLine = document.querySelector('#bend-carrier-wave');
 const showCarrierControl = document.querySelector('#bend-show-carrier');
 const listenButton = document.querySelector('#bend-listen');
@@ -60,6 +63,15 @@ function sameSettings(left, right) {
 
 function render() {
   const settings = currentSettings();
+  const frozenIndex = indexAt(settings.moment, settings);
+  const repeatCycles = frozenIndex !== 0 && settings.ratio === 1.5 ? 2 : 1;
+  const repeatX = 12 + 94 * repeatCycles;
+  repeatLine.setAttribute('x2', String(repeatX));
+  repeatEnd.setAttribute('x1', String(repeatX));
+  repeatEnd.setAttribute('x2', String(repeatX));
+  repeatReadout.textContent = repeatCycles === 1
+    ? 'Frozen wave repeats after 1 carrier cycle.'
+    : 'Frozen wave repeats after 2 carrier cycles.';
   const modulator = CARRIER_HZ * settings.ratio;
   const modulatorPoints = [];
   const wavePoints = [];
