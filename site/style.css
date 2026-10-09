@@ -55,7 +55,7 @@ input[type="range"] { margin: 0; accent-color: #bd590f; }
   margin: 0;
   accent-color: #bd590f;
 }
-#bend-carrier-wave[hidden], #bend-overlay-wave[hidden] { display: none !important; }
+#bend-carrier-wave[hidden], #bend-overlay-wave[hidden], #bend-modulator-point[hidden], #bend-result-point[hidden] { display: none !important; }
 .sound-section { margin: 24px 0; }
 .keep-section {
   min-width: 0;

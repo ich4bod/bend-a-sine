@@ -13,6 +13,11 @@ const waveLine = document.querySelector('#bend-wave');
 const repeatLine = document.querySelector('#bend-repeat-line');
 const repeatEnd = document.querySelector('#bend-repeat-end');
 const repeatReadout = document.querySelector('#bend-repeat-readout');
+const pointInspector = document.querySelector('#bend-phase-inspector');
+const pointControl = document.querySelector('#bend-point');
+const pointReadout = document.querySelector('#bend-point-readout');
+const modulatorPoint = document.querySelector('#bend-modulator-point');
+const resultPoint = document.querySelector('#bend-result-point');
 const carrierLine = document.querySelector('#bend-carrier-wave');
 const showCarrierControl = document.querySelector('#bend-show-carrier');
 const listenButton = document.querySelector('#bend-listen');
@@ -102,6 +107,7 @@ function render() {
 
   modulatorLine.setAttribute('points', modulatorPoints.join(' '));
   waveLine.setAttribute('points', wavePoints.join(' '));
+  refreshPointInspector();
   values.textContent = `Carrier: ${CARRIER_HZ} Hz · modulator: ${modulator} Hz · index: ${settings.index.toFixed(2)}.`;
   indexHere.textContent = `Index here: ${indexAt(settings.moment, settings).toFixed(2)} at ${settings.moment.toFixed(2)} seconds.`;
   momentControl.disabled = settings.bend === 'steady';
@@ -145,6 +151,25 @@ function renderKept() {
   listenKeptButton.disabled = false;
   comparePlayButton.disabled = false;
 }
+
+function refreshPointInspector() {
+  const visible = pointInspector.open;
+  modulatorPoint.toggleAttribute('hidden', !visible);
+  resultPoint.toggleAttribute('hidden', !visible);
+  if (!visible) return;
+
+  const index = Number(pointControl.value);
+  const source = modulatorLine.getAttribute('points').split(' ')[index].split(',').map(Number);
+  const result = waveLine.getAttribute('points').split(' ')[index].split(',').map(Number);
+  modulatorPoint.setAttribute('cx', String(source[0]));
+  modulatorPoint.setAttribute('cy', String(source[1]));
+  resultPoint.setAttribute('cx', String(result[0]));
+  resultPoint.setAttribute('cy', String(result[1]));
+  pointReadout.textContent = `At ${(index / 100).toFixed(2)} carrier cycles: bending sine ${((80 - source[1]) / 60).toFixed(3)} · resulting wave ${((80 - result[1]) / 60).toFixed(3)}.`;
+}
+
+pointControl.addEventListener('input', refreshPointInspector);
+pointInspector.addEventListener('toggle', refreshPointInspector);
 
 function refresh() {
   render();
