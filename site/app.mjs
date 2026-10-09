@@ -16,6 +16,7 @@ const repeatReadout = document.querySelector('#bend-repeat-readout');
 const carrierLine = document.querySelector('#bend-carrier-wave');
 const showCarrierControl = document.querySelector('#bend-show-carrier');
 const listenButton = document.querySelector('#bend-listen');
+const listenFrozenButton = document.querySelector('#bend-listen-frozen');
 const listenCarrierButton = document.querySelector('#bend-listen-carrier');
 const listenModulatorButton = document.querySelector('#bend-listen-modulator');
 const comparePlainButton = document.querySelector('#bend-compare-plain');
@@ -235,6 +236,12 @@ function listen(settings = currentSettings(), sourceFrequency = null, sourcePhas
     : plainNote(sourceFrequency, rate, sourcePhase), 'Playing one note.');
 }
 
+function listenFrozenInstant() {
+  const snapshot = { ...currentSettings() };
+  const frozenIndex = indexAt(snapshot.moment, snapshot);
+  return playSound(rate => note({ ...snapshot, index: frozenIndex, bend: 'steady' }, rate), 'Playing the frozen instant.');
+}
+
 function compareNotes() {
   if (!keptSettings) return;
   const kept = { ...keptSettings };
@@ -292,6 +299,7 @@ modeControl.addEventListener('change', settingsChanged);
 momentControl.addEventListener('input', settingsChanged);
 momentControl.addEventListener('change', settingsChanged);
 listenButton.addEventListener('click', () => listen());
+listenFrozenButton.addEventListener('click', listenFrozenInstant);
 listenCarrierButton.addEventListener('click', () => listen(undefined, CARRIER_HZ));
 listenModulatorButton.addEventListener('click', () => listen(undefined, CARRIER_HZ * Number(ratioControl.value), Number(phaseControl.value)));
 stopButton.addEventListener('click', stopSound);
