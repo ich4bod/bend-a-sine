@@ -1,0 +1,161 @@
+{
+  "slug": "bend-a-sine",
+  "controls": [
+    [
+      "bend-ratio",
+      "select"
+    ],
+    [
+      "bend-phase",
+      "select"
+    ],
+    [
+      "bend-index",
+      "input"
+    ],
+    [
+      "bend-mode",
+      "select"
+    ],
+    [
+      "bend-moment",
+      "select"
+    ],
+    [
+      "bend-listen",
+      "button"
+    ],
+    [
+      "bend-listen-frozen",
+      "button"
+    ],
+    [
+      "bend-listen-carrier",
+      "button"
+    ],
+    [
+      "bend-listen-modulator",
+      "button"
+    ],
+    [
+      "bend-compare-plain",
+      "button"
+    ],
+    [
+      "bend-stop",
+      "button"
+    ],
+    [
+      "bend-show-carrier",
+      "input"
+    ],
+    [
+      "bend-point",
+      "input"
+    ],
+    [
+      "bend-keep",
+      "button"
+    ],
+    [
+      "bend-return",
+      "button"
+    ],
+    [
+      "bend-forget",
+      "button"
+    ],
+    [
+      "bend-listen-kept",
+      "button"
+    ],
+    [
+      "bend-compare-play",
+      "button"
+    ],
+    [
+      "bend-overlay-kept",
+      "input"
+    ]
+  ],
+  "copy": [
+    {
+      "selector": "#bend-compare-plain-help",
+      "text": "First the plain carrier, then a short silence, then this bend. Both notes use the same loudness envelope."
+    },
+    {
+      "selector": "#bend-sound-help",
+      "text": "Each press plays one 0.8-second note. Changing a control stops it; changing a control never plays it. Start with your volume low."
+    },
+    {
+      "selector": "#bend-sources-help",
+      "text": "These are separate notes, not a mixture. The bending sine changes an angle in the resulting sound."
+    },
+    {
+      "selector": "#bend-frozen-help",
+      "text": "Hold the index shown here for one 0.8-second note. The evolving bend and kept comparison stay unchanged."
+    },
+    {
+      "selector": "#bend-fall-help",
+      "text": "A falling bend reaches zero index after 0.60 seconds; a rising bend reaches the chosen index then. This plot freezes that instant; the heard note changes continuously. The amplitude envelope is unchanged."
+    },
+    {
+      "selector": "#bend-carrier-help",
+      "text": "The dashed line is the plain carrier on the same scale. At zero index, the resulting wave lies on it."
+    },
+    {
+      "selector": "#bend-repeat-help",
+      "text": "The mark shows one full repeat of this frozen shape. During a falling bend, the heard note keeps changing instead."
+    },
+    {
+      "selector": "#bend-point-help",
+      "text": "The gold dots mark the same instant in the source and result. Moving them is silent; it does not change either wave."
+    },
+    {
+      "selector": "#bend-compare-help",
+      "text": "Two 0.8-second notes with 0.25 seconds of silence between. Each keeps the same amplitude envelope. Stop ends the whole comparison."
+    },
+    {
+      "selector": "#bend-keep-help",
+      "text": "The orange wave keeps its own ratio, index, bend mode and inspected instant. Hearing it does not change the cyan wave. Return changes the controls only; it does not play a note."
+    },
+    {
+      "selector": "#bend-overlay-help",
+      "text": "The dashed orange line keeps its own frozen instant. Both shapes use the same four carrier cycles; showing it does not play either note."
+    }
+  ],
+  "cases": [
+    {
+      "slug": "bend-a-sine",
+      "lane": 16,
+      "mode": "comparisons",
+      "title": "Bend a sine — Separate direct notes from two-note comparisons",
+      "depends": "689, 702",
+      "goal": "Four direct notes and Stop remain easy to find. Comparing two notes is a separate deliberate choice, with its timing explanation beside it.",
+      "steps": "Inside #bend-live-sound after the direct-note/Stop action row add closed details #bend-comparisons. Move #bend-compare-plain and #bend-compare-frozen into it, with #bend-compare-plain-help and #bend-frozen-pair-help verbatim. The plain-pair paragraph currently resides in702 #bend-sound-guide; this card deliberately moves only that paragraph out to its comparison buttons. Keep other702 explanations in their guide, which remains a sibling of comparisons. Keep bend-listen, bend-listen-frozen, bend-listen-carrier, bend-listen-modulator, bend-stop, bend-sound-status, bend-sound-help and bend-frozen-help outside comparisons and visible. Preserve memory comparisons in #bend-memory; this card concerns only current-vs-plain/frozen pairs. No audio buffer/helper/pending-token change.",
+      "groups": [
+        {
+          "id": "bend-comparisons",
+          "summary": "Compare two notes",
+          "members": [
+            "#bend-compare-plain",
+            "#bend-compare-frozen",
+            "#bend-compare-plain-help",
+            "#bend-frozen-pair-help"
+          ]
+        }
+      ],
+      "outside": [
+        "#bend-listen",
+        "#bend-listen-frozen",
+        "#bend-listen-carrier",
+        "#bend-listen-modulator",
+        "#bend-stop",
+        "#bend-sound-status",
+        "#bend-sound-help",
+        "#bend-sound-guide"
+      ],
+      "message": "direct sine notes and Stop stay visible while two-note comparisons keep their own timing explanation"
+    }
+  ]
+}
