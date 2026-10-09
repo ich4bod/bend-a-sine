@@ -1,4 +1,4 @@
-import { CARRIER_HZ, indexAt, note, plainNote, sample } from './model.mjs?v=6';
+import { CARRIER_HZ, indexAt, note, plainNote, sample } from './model.mjs?v=7';
 
 const ratioControl = document.querySelector('#bend-ratio');
 const phaseControl = document.querySelector('#bend-phase');
@@ -35,6 +35,14 @@ const overlayWaveLine = document.querySelector('#bend-overlay-wave');
 let keptSettings = null;
 const points = 400;
 const duration = 4 / CARRIER_HZ;
+const repeatCyclesByRatio = new Map([
+  [1, 1],
+  [1.5, 2],
+  [1.3333333333333333, 3],
+  [1.25, 4],
+  [2, 1],
+  [3, 1],
+]);
 
 function serializePoint(x, y) {
   return `${x.toFixed(9)},${y.toFixed(9)}`;
@@ -72,14 +80,14 @@ function sameSettings(left, right) {
 function render() {
   const settings = currentSettings();
   const frozenIndex = indexAt(settings.moment, settings);
-  const repeatCycles = frozenIndex !== 0 && settings.ratio === 1.5 ? 2 : 1;
+  const repeatCycles = frozenIndex === 0 ? 1 : (repeatCyclesByRatio.get(settings.ratio) ?? 1);
   const repeatX = 12 + 94 * repeatCycles;
   repeatLine.setAttribute('x2', String(repeatX));
   repeatEnd.setAttribute('x1', String(repeatX));
   repeatEnd.setAttribute('x2', String(repeatX));
   repeatReadout.textContent = repeatCycles === 1
     ? 'Frozen wave repeats after 1 carrier cycle.'
-    : 'Frozen wave repeats after 2 carrier cycles.';
+    : `Frozen wave repeats after ${repeatCycles} carrier cycles.`;
   const modulator = CARRIER_HZ * settings.ratio;
   const modulatorPoints = [];
   const wavePoints = [];
