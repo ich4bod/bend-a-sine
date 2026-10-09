@@ -88,6 +88,24 @@ p { margin: 12px 0; }
 details { margin-top: 24px; }
 summary { min-height: 44px; padding-block: 8px; cursor: pointer; }
 #bend-memory > summary { min-height: 44px; padding-block: 8px; }
+#bend-comparisons {
+  margin-top: 8px;
+  padding: 12px;
+  border: 1px solid #64d9d0;
+  border-radius: 8px;
+  background: #13212b;
+  color: #ede6d8;
+}
+#bend-comparisons > summary {
+  min-height: 45px;
+  padding-block: 8px;
+  font: 16px/1.55 system-ui, sans-serif;
+}
+#bend-comparisons > summary:focus-visible {
+  outline: 3px solid #bd590f;
+  outline-offset: 3px;
+}
+#bend-comparisons > p { margin: 8px 0; }
 details p { margin: 8px 0; }
 footer {
   display: flex;
