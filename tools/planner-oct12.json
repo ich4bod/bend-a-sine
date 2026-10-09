@@ -1,0 +1,57 @@
+{
+  "slug": "bend-a-sine",
+  "cases": {
+    "studies": {
+      "kind": "values",
+      "message": "three frozen bend studies change settings silently and leave a kept bend returnable",
+      "door": "bend-studies",
+      "summary": "Try three frozen bends",
+      "select": "bend-study",
+      "apply": "bend-study-apply",
+      "keep": "bend-keep",
+      "return": "bend-return",
+      "fields": [
+        "bend-ratio",
+        "bend-phase",
+        "bend-index",
+        "bend-mode",
+        "bend-moment"
+      ],
+      "rows": [
+        [
+          "slow",
+          "Slow source",
+          [
+            "0.5",
+            "0",
+            "2",
+            "steady",
+            "0"
+          ]
+        ],
+        [
+          "thirds",
+          "Three-cycle source",
+          [
+            "0.6666666666666666",
+            "0.25",
+            "3",
+            "steady",
+            "0"
+          ]
+        ],
+        [
+          "plain",
+          "No bend",
+          [
+            "1",
+            "0",
+            "0",
+            "steady",
+            "0"
+          ]
+        ]
+      ]
+    }
+  }
+}
