@@ -22,6 +22,7 @@ const carrierLine = document.querySelector('#bend-carrier-wave');
 const showCarrierControl = document.querySelector('#bend-show-carrier');
 const listenButton = document.querySelector('#bend-listen');
 const listenFrozenButton = document.querySelector('#bend-listen-frozen');
+const compareFrozenButton = document.querySelector('#bend-compare-frozen');
 const listenCarrierButton = document.querySelector('#bend-listen-carrier');
 const listenModulatorButton = document.querySelector('#bend-listen-modulator');
 const comparePlainButton = document.querySelector('#bend-compare-plain');
@@ -261,10 +262,25 @@ function listen(settings = currentSettings(), sourceFrequency = null, sourcePhas
     : plainNote(sourceFrequency, rate, sourcePhase), 'Playing one note.');
 }
 
+function frozenSettings(snapshot) {
+  return { ...snapshot, index: indexAt(snapshot.moment, snapshot), bend: 'steady' };
+}
+
 function listenFrozenInstant() {
   const snapshot = { ...currentSettings() };
-  const frozenIndex = indexAt(snapshot.moment, snapshot);
-  return playSound(rate => note({ ...snapshot, index: frozenIndex, bend: 'steady' }, rate), 'Playing the frozen instant.');
+  const frozen = frozenSettings(snapshot);
+  return playSound(rate => note(frozen, rate), 'Playing the frozen instant.');
+}
+
+function compareEvolvingThenFrozen() {
+  const snapshot = { ...currentSettings() };
+  const frozen = frozenSettings(snapshot);
+  return playSound(rate => {
+    const samples = new Float32Array(Math.round(1.85 * rate));
+    samples.set(note(snapshot, rate), 0);
+    samples.set(note(frozen, rate), Math.round(1.05 * rate));
+    return samples;
+  }, 'Playing evolving then frozen.');
 }
 
 function compareNotes() {
@@ -325,6 +341,7 @@ momentControl.addEventListener('input', settingsChanged);
 momentControl.addEventListener('change', settingsChanged);
 listenButton.addEventListener('click', () => listen());
 listenFrozenButton.addEventListener('click', listenFrozenInstant);
+compareFrozenButton.addEventListener('click', compareEvolvingThenFrozen);
 listenCarrierButton.addEventListener('click', () => listen(undefined, CARRIER_HZ));
 listenModulatorButton.addEventListener('click', () => listen(undefined, CARRIER_HZ * Number(ratioControl.value), Number(phaseControl.value)));
 stopButton.addEventListener('click', stopSound);

@@ -6,7 +6,7 @@
   <meta name="description" content="One sine bends another. Change the bend before you hear it.">
   <title>Bend a sine</title>
   <link rel="stylesheet" href="/style.css?v=10">
-  <script type="module" src="/app.mjs?v=15"></script>
+  <script type="module" src="/app.mjs?v=16"></script>
 </head>
 <body>
   <main class="page">
@@ -65,6 +65,7 @@
       <div class="sound-controls">
         <button id="bend-listen" type="button">Hear this bend</button>
         <button id="bend-listen-frozen" type="button">Hear the frozen instant</button>
+        <button id="bend-compare-frozen" type="button">Hear evolving, then frozen</button>
         <button id="bend-listen-carrier" type="button">Hear plain carrier</button>
         <button id="bend-listen-modulator" type="button">Hear bending sine</button>
         <button id="bend-compare-plain" type="button">Hear plain, then this bend</button>
@@ -75,6 +76,7 @@
       <p id="bend-sound-help">Each press plays one 0.8-second note. Changing a control stops it; changing a control never plays it. Start with your volume low.</p>
       <p id="bend-sources-help">These are separate notes, not a mixture. The bending sine changes an angle in the resulting sound.</p>
       <p id="bend-frozen-help">Hold the index shown here for one 0.8-second note. The evolving bend and kept comparison stay unchanged.</p>
+      <p id="bend-frozen-pair-help">The changing note, then the index held here: two 0.8-second notes with 0.25 seconds of silence between. Stop ends both; no bend is kept or replaced.</p>
     </section>
     <p id="bend-fall-help">A falling bend reaches zero index after 0.60 seconds; a rising bend reaches the chosen index then. This plot freezes that instant; the heard note changes continuously. The amplitude envelope is unchanged.</p>
 
