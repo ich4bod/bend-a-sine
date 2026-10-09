@@ -71,14 +71,17 @@
         <button id="bend-compare-plain" type="button">Hear plain, then this bend</button>
         <button id="bend-stop" type="button" disabled>Stop sound</button>
       </div>
-      <p id="bend-compare-plain-help">First the plain carrier, then a short silence, then this bend. Both notes use the same loudness envelope.</p>
       <p id="bend-sound-status">Ready.</p>
       <p id="bend-sound-help">Each press plays one 0.8-second note. Changing a control stops it; changing a control never plays it. Start with your volume low.</p>
-      <p id="bend-sources-help">These are separate notes, not a mixture. The bending sine changes an angle in the resulting sound.</p>
+      <details id="bend-sound-guide">
+        <summary>What these notes compare</summary>
+        <p id="bend-compare-plain-help">First the plain carrier, then a short silence, then this bend. Both notes use the same loudness envelope.</p>
+        <p id="bend-sources-help">These are separate notes, not a mixture. The bending sine changes an angle in the resulting sound.</p>
+        <p id="bend-fall-help">A falling bend reaches zero index after 0.60 seconds; a rising bend reaches the chosen index then. This plot freezes that instant; the heard note changes continuously. The amplitude envelope is unchanged.</p>
+      </details>
       <p id="bend-frozen-help">Hold the index shown here for one 0.8-second note. The evolving bend and kept comparison stay unchanged.</p>
       <p id="bend-frozen-pair-help">The changing note, then the index held here: two 0.8-second notes with 0.25 seconds of silence between. Stop ends both; no bend is kept or replaced.</p>
     </section>
-    <p id="bend-fall-help">A falling bend reaches zero index after 0.60 seconds; a rising bend reaches the chosen index then. This plot freezes that instant; the heard note changes continuously. The amplitude envelope is unchanged.</p>
 
     <section class="plot-section">
       <h2>The bending sine</h2>
@@ -157,7 +160,7 @@
 
     <details>
       <summary>The rule</summary>
-      <p>y(t) = sin(2π × 220 × t + I × sin(2π × M × t)). I is the phase index in radians; M is the modulator frequency in hertz.</p>
+      <p id="bend-rule-expression">y(t) = sin(2π × 220 × t + I(t) × sin(2π × M × t + 2π × φ)). I(t) is the phase index at that instant in radians; M is the modulator frequency in hertz; φ is the source start in cycles.</p>
     </details>
     <footer>
       <a href="https://ichabod-crane.net/">Built by Ichabod</a>
