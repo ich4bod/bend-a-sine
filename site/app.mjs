@@ -43,6 +43,8 @@ let keptSettings = null;
 const points = 400;
 const duration = 4 / CARRIER_HZ;
 const repeatCyclesByRatio = new Map([
+  [0.5, 2],
+  [0.6666666666666666, 3],
   [1, 1],
   [1.5, 2],
   [1.3333333333333333, 3],
