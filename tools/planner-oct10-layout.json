@@ -156,6 +156,43 @@
         "#bend-sound-guide"
       ],
       "message": "direct sine notes and Stop stay visible while two-note comparisons keep their own timing explanation"
+    },
+    {
+      "slug": "bend-a-sine",
+      "lane": 16,
+      "mode": "repeatquestion",
+      "title": "Bend a sine — Let the frozen-repeat question open beside its marker",
+      "depends": "nothing",
+      "goal": "The waveform stays the main result. Its repeat arithmetic becomes an optional question, independent of the silent two-wave point inspector.",
+      "steps": "Inside the resulting-wave .plot-section, immediately after the existing plot panel add closed details #bend-repeat-reader. Move only #bend-repeat-readout and #bend-repeat-help into it in that order, preserving both nodes and all dynamic/static wording. Keep #bend-repeat-marker in the existing result SVG where the model already draws it, with unchanged coordinates/visibility, and keep #bend-phase-inspector as the following independent drawer outside the plot section. This deliberately folds only the written repeat question, not the marker or any wave. No model/render/toggle/audio change; existing render must keep updating the folded readout.",
+      "groups": [
+        {
+          "id": "bend-repeat-reader",
+          "summary": "Where this frozen wave repeats",
+          "members": [
+            "#bend-repeat-readout",
+            "#bend-repeat-help"
+          ]
+        }
+      ],
+      "outside": [
+        "#bend-repeat-marker",
+        "#bend-wave",
+        "#bend-result-plot",
+        "#bend-phase-inspector",
+        "#bend-index-here"
+      ],
+      "orders": [
+        [
+          "#bend-result-plot",
+          "#bend-repeat-reader"
+        ],
+        [
+          "#bend-repeat-reader",
+          "#bend-phase-inspector"
+        ]
+      ],
+      "message": "the frozen-repeat explanation folds beside its unchanged marker and independent point inspector"
     }
   ]
 }
