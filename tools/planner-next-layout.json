@@ -1,0 +1,123 @@
+{
+  "slug": "bend-a-sine",
+  "controls": [
+    [
+      "bend-ratio",
+      "select"
+    ],
+    [
+      "bend-phase",
+      "select"
+    ],
+    [
+      "bend-index",
+      "input"
+    ],
+    [
+      "bend-mode",
+      "select"
+    ],
+    [
+      "bend-moment",
+      "select"
+    ],
+    [
+      "bend-listen",
+      "button"
+    ],
+    [
+      "bend-listen-frozen",
+      "button"
+    ],
+    [
+      "bend-compare-frozen",
+      "button"
+    ],
+    [
+      "bend-listen-carrier",
+      "button"
+    ],
+    [
+      "bend-listen-modulator",
+      "button"
+    ],
+    [
+      "bend-compare-plain",
+      "button"
+    ],
+    [
+      "bend-stop",
+      "button"
+    ],
+    [
+      "bend-show-carrier",
+      "input"
+    ],
+    [
+      "bend-point",
+      "input"
+    ],
+    [
+      "bend-keep",
+      "button"
+    ],
+    [
+      "bend-return",
+      "button"
+    ],
+    [
+      "bend-forget",
+      "button"
+    ],
+    [
+      "bend-listen-kept",
+      "button"
+    ],
+    [
+      "bend-compare-play",
+      "button"
+    ],
+    [
+      "bend-overlay-kept",
+      "input"
+    ]
+  ],
+  "cases": [
+    {
+      "slug": "bend-a-sine",
+      "lane": 16,
+      "name": "Bend a sine",
+      "mode": "sourcechoices",
+      "title": "Bend a sine \u2014 Keep ratio and index direct while folding the changing-source choices",
+      "depends": "nothing",
+      "message": "ratio and index remain direct while source phase and changing-index choices share a silent door",
+      "groups": [
+        {
+          "id": "bend-source-choices",
+          "summary": "Source phase and changing index",
+          "members": [
+            "#bend-phase",
+            "#bend-mode",
+            "#bend-moment"
+          ]
+        }
+      ],
+      "outside": [
+        "#bend-ratio",
+        "#bend-index",
+        "#bend-live-sound"
+      ],
+      "copySelectors": [
+        ".control-help"
+      ],
+      "steps": "Inside section.controls leave the intact .control for #bend-ratio first and #bend-index second. After these two add closed details#bend-source-choices. Move the intact .control blocks for #bend-phase (including .control-help), #bend-mode and #bend-moment into it, in that order. Keep every label associated and all values/options/disabled semantics unchanged. Preserve703's slower ratios if already shipped. Do not reparent plots, sound or repeat-marker controls.",
+      "palette": "paper #ede6d8, ink #202d39, plot #13212b, cyan #64d9d0, orange #efa562; existing Georgia/system16",
+      "copy": [
+        [
+          ".control-help",
+          "This shifts the bending sine, not its frequency. The carrier still starts at zero phase."
+        ]
+      ]
+    }
+  ]
+}
