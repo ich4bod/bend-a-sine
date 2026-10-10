@@ -6,7 +6,7 @@
   <meta name="description" content="One sine bends another. Change the bend before you hear it.">
   <title>Bend a sine</title>
   <link rel="stylesheet" href="/style.css?v=19">
-  <script type="module" src="/app.mjs?v=22"></script>
+  <script type="module" src="/app.mjs?v=23"></script>
 </head>
 <body>
   <main class="page">
@@ -151,7 +151,7 @@
     </details>
 
     <details id="bend-studies">
-      <summary>Try three frozen bends</summary>
+      <summary>Try frozen bends</summary>
       <div class="study-controls">
         <div class="control">
           <label for="bend-study">Frozen study</label>
@@ -159,6 +159,9 @@
             <option value="slow" selected>Slow source</option>
             <option value="thirds">Three-cycle source</option>
             <option value="plain">No bend</option>
+            <option value="octave">Octave source</option>
+            <option value="fifths">Three-halves source</option>
+            <option value="fast">Triple source</option>
           </select>
         </div>
         <button id="bend-study-apply" type="button">Use this bend</button>
