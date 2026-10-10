@@ -31,6 +31,8 @@ const soundStatus = document.querySelector('#bend-sound-status');
 const keepButton = document.querySelector('#bend-keep');
 const returnButton = document.querySelector('#bend-return');
 const forgetButton = document.querySelector('#bend-forget');
+const studyControl = document.querySelector('#bend-study');
+const studyApplyButton = document.querySelector('#bend-study-apply');
 const listenKeptButton = document.querySelector('#bend-listen-kept');
 const comparePlayButton = document.querySelector('#bend-compare-play');
 const keptPlot = document.querySelector('#bend-kept-plot');
@@ -42,6 +44,11 @@ const overlayWaveLine = document.querySelector('#bend-overlay-wave');
 let keptSettings = null;
 const points = 400;
 const duration = 4 / CARRIER_HZ;
+const frozenStudies = new Map([
+  ['slow', { ratio: 0.5, phase: 0, index: 2, bend: 'steady', moment: 0 }],
+  ['thirds', { ratio: 0.6666666666666666, phase: 0.25, index: 3, bend: 'steady', moment: 0 }],
+  ['plain', { ratio: 1, phase: 0, index: 0, bend: 'steady', moment: 0 }],
+]);
 const repeatCyclesByRatio = new Map([
   [0.5, 2],
   [0.6666666666666666, 3],
@@ -179,6 +186,23 @@ function refresh() {
   renderKept();
 }
 
+function updateStudyEligibility() {
+  const study = frozenStudies.get(studyControl.value);
+  studyApplyButton.disabled = !study || sameSettings(currentSettings(), study);
+}
+
+studyControl.addEventListener('change', updateStudyEligibility);
+studyApplyButton.addEventListener('click', () => {
+  const study = frozenStudies.get(studyControl.value);
+  if (!study || sameSettings(currentSettings(), study)) return;
+  ratioControl.value = String(study.ratio);
+  phaseControl.value = String(study.phase);
+  indexControl.value = String(study.index);
+  modeControl.value = study.bend;
+  momentControl.value = String(study.moment);
+  settingsChanged();
+});
+
 keepButton.addEventListener('click', () => {
   keptSettings = { ...currentSettings() };
   renderKept();
@@ -310,6 +334,7 @@ function comparePlainThenCurrent() {
 function settingsChanged() {
   stopSound();
   refresh();
+  updateStudyEligibility();
 }
 
 returnButton.addEventListener('click', () => {
@@ -321,6 +346,7 @@ returnButton.addEventListener('click', () => {
   modeControl.value = keptSettings.bend;
   momentControl.value = String(keptSettings.moment);
   refresh();
+  updateStudyEligibility();
 });
 
 listenKeptButton.addEventListener('click', () => {
@@ -351,3 +377,4 @@ document.addEventListener('visibilitychange', () => {
   if (document.hidden) stopSound();
 });
 refresh();
+updateStudyEligibility();
