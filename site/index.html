@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="One sine bends another. Change the bend before you hear it.">
   <title>Bend a sine</title>
-  <link rel="stylesheet" href="/style.css?v=18">
-  <script type="module" src="/app.mjs?v=21"></script>
+  <link rel="stylesheet" href="/style.css?v=19">
+  <script type="module" src="/app.mjs?v=22"></script>
 </head>
 <body>
   <main class="page">
@@ -145,6 +145,8 @@
       <p id="bend-angle-help">The carrier angle and the added bend are in radians. The sine of their total gives the result at the gold point. This reads the chosen frozen moment; it does not play a note.</p>
       <p id="bend-next-sample-readout">Samples 0 → 1: 0.000 → 0.063; change 0.063 in sine value.</p>
       <p id="bend-next-sample-help">Each plotted step is one hundredth of a carrier cycle. This subtracts neighboring sine values; it is not a derivative. The reading uses the chosen frozen moment and makes no sound.</p>
+      <p id="bend-kept-point-readout">Keep a bend to compare this point.</p>
+      <p id="bend-kept-point-help">Both values come from this same sample of their frozen waves. The difference is signed: current minus kept. Keeping a bend does not move the gold point or play a note.</p>
       <p id="bend-point-help">The gold dots mark the same instant in the source and result. Moving them is silent; it does not change either wave.</p>
     </details>
 

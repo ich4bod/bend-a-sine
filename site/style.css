@@ -66,7 +66,8 @@ input[type="range"] { margin: 0; accent-color: #bd590f; }
 }
 .keep-section legend { padding-inline: 4px; font-weight: 650; }
 .keep-controls { display: flex; flex-wrap: wrap; gap: 8px; }
-#bend-kept-values { font-variant-numeric: tabular-nums; }
+#bend-kept-values, #bend-kept-point-readout { font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+#bend-kept-point-help { color: #64747d; }
 .wave.wave-kept { stroke: #efa562; }
 .sound-controls { display: flex; flex-wrap: wrap; gap: 8px; }
 button {

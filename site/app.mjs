@@ -16,6 +16,7 @@ const repeatReadout = document.querySelector('#bend-repeat-readout');
 const pointInspector = document.querySelector('#bend-phase-inspector');
 const pointControl = document.querySelector('#bend-point');
 const pointReadout = document.querySelector('#bend-point-readout');
+const keptPointReadout = document.querySelector('#bend-kept-point-readout');
 const angleCarrier = document.querySelector('#bend-angle-carrier');
 const angleAdded = document.querySelector('#bend-angle-added');
 const angleTotal = document.querySelector('#bend-angle-total');
@@ -166,6 +167,7 @@ function renderKept() {
     listenKeptButton.disabled = true;
     comparePlayButton.disabled = true;
     updatePlottedGap();
+    refreshPointInspector();
     return;
   }
 
@@ -188,6 +190,7 @@ function renderKept() {
   listenKeptButton.disabled = false;
   comparePlayButton.disabled = false;
   updatePlottedGap();
+  refreshPointInspector();
 }
 
 function formatInspectionValue(value) {
@@ -195,13 +198,24 @@ function formatInspectionValue(value) {
 }
 
 function refreshPointInspector() {
+  const settings = currentSettings();
+  const index = Number(pointControl.value);
+  if (!keptSettings) {
+    keptPointReadout.textContent = 'Keep a bend to compare this point.';
+  } else {
+    const currentFrozen = { ...settings, index: indexAt(settings.moment, settings), bend: 'steady' };
+    const keptFrozen = { ...keptSettings, index: indexAt(keptSettings.moment, keptSettings), bend: 'steady' };
+    const time = index / (100 * CARRIER_HZ);
+    const currentValue = sample(time, currentFrozen);
+    const keptValue = sample(time, keptFrozen);
+    keptPointReadout.textContent = `Sample ${index}: current ${formatInspectionValue(currentValue)} · kept ${formatInspectionValue(keptValue)} · current − kept ${formatInspectionValue(currentValue - keptValue)}.`;
+  }
+
   const visible = pointInspector.open;
   modulatorPoint.toggleAttribute('hidden', !visible);
   resultPoint.toggleAttribute('hidden', !visible);
   if (!visible) return;
 
-  const settings = currentSettings();
-  const index = Number(pointControl.value);
   const source = modulatorLine.getAttribute('points').split(' ')[index].split(',').map(Number);
   const result = waveLine.getAttribute('points').split(' ')[index].split(',').map(Number);
   modulatorPoint.setAttribute('cx', String(source[0]));
