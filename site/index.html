@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="One sine bends another. Change the bend before you hear it.">
   <title>Bend a sine</title>
-  <link rel="stylesheet" href="/style.css?v=14">
-  <script type="module" src="/app.mjs?v=18"></script>
+  <link rel="stylesheet" href="/style.css?v=15">
+  <script type="module" src="/app.mjs?v=19"></script>
 </head>
 <body>
   <main class="page">
@@ -136,6 +136,13 @@
       <label for="bend-point">Point along the four cycles</label>
       <input id="bend-point" type="range" min="0" max="400" step="1" value="0">
       <p id="bend-point-readout">At 0.00 carrier cycles: bending sine 0.000 · resulting wave 0.000.</p>
+      <dl id="bend-angle-parts">
+        <div><dt>Carrier angle</dt><dd id="bend-angle-carrier">0.000 rad</dd></div>
+        <div><dt>Added bend</dt><dd id="bend-angle-added">0.000 rad</dd></div>
+        <div><dt>Total angle</dt><dd id="bend-angle-total">0.000 rad</dd></div>
+        <div><dt>Resulting sine</dt><dd id="bend-angle-result">1.000</dd></div>
+      </dl>
+      <p id="bend-angle-help">The carrier angle and the added bend are in radians. The sine of their total gives the result at the gold point. This reads the chosen frozen moment; it does not play a note.</p>
       <p id="bend-point-help">The gold dots mark the same instant in the source and result. Moving them is silent; it does not change either wave.</p>
     </details>
 
