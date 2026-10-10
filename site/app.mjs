@@ -43,6 +43,7 @@ const keptPlot = document.querySelector('#bend-kept-plot');
 const keptPanel = document.querySelector('#bend-kept-panel');
 const keptWaveLine = document.querySelector('#bend-kept-wave');
 const keptValues = document.querySelector('#bend-kept-values');
+const plottedGapReadout = document.querySelector('#bend-plotted-gap-readout');
 const overlayKeptControl = document.querySelector('#bend-overlay-kept');
 const overlayWaveLine = document.querySelector('#bend-overlay-wave');
 let keptSettings = null;
@@ -130,6 +131,26 @@ function render() {
 
 overlayKeptControl.addEventListener('change', renderKept);
 
+function updatePlottedGap() {
+  if (!keptSettings) {
+    plottedGapReadout.textContent = 'Keep a bend to compare the plotted samples.';
+    return;
+  }
+
+  const currentY = waveLine.getAttribute('points').split(' ').map(point => Number(point.split(',')[1]));
+  const keptY = keptWaveLine.getAttribute('points').split(' ').map(point => Number(point.split(',')[1]));
+  let largestGap = -1;
+  let largestIndex = 0;
+  for (let i = 0; i < currentY.length; i += 1) {
+    const gap = Math.abs(currentY[i] - keptY[i]) / 60;
+    if (gap > largestGap) {
+      largestGap = gap;
+      largestIndex = i;
+    }
+  }
+  plottedGapReadout.textContent = `Largest plotted gap: ${largestGap.toFixed(3)} at sample ${largestIndex} of ${points} (${(largestIndex / 100).toFixed(2)} carrier cycles).`;
+}
+
 function renderKept() {
   overlayKeptControl.disabled = !keptSettings;
   if (!keptSettings) {
@@ -143,6 +164,7 @@ function renderKept() {
     forgetButton.disabled = true;
     listenKeptButton.disabled = true;
     comparePlayButton.disabled = true;
+    updatePlottedGap();
     return;
   }
 
@@ -164,6 +186,7 @@ function renderKept() {
   forgetButton.disabled = false;
   listenKeptButton.disabled = false;
   comparePlayButton.disabled = false;
+  updatePlottedGap();
 }
 
 function formatInspectionValue(value) {

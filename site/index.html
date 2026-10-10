@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="One sine bends another. Change the bend before you hear it.">
   <title>Bend a sine</title>
-  <link rel="stylesheet" href="/style.css?v=17">
-  <script type="module" src="/app.mjs?v=19"></script>
+  <link rel="stylesheet" href="/style.css?v=18">
+  <script type="module" src="/app.mjs?v=20"></script>
 </head>
 <body>
   <main class="page">
@@ -189,6 +189,11 @@
         </svg>
       </div>
     </fieldset>
+      <details id="bend-plotted-gap">
+        <summary>Read the largest plotted gap</summary>
+        <p id="bend-plotted-gap-readout">Keep a bend to compare the plotted samples.</p>
+        <p id="bend-plotted-gap-help">This compares the 401 vertices drawn in the current and kept waves. It names the earliest largest sampled gap, not the greatest difference between the continuous curves and not a difference in loudness.</p>
+      </details>
     </details>
 
     <p>These plots show four carrier cycles. The upper sine changes the angle inside the lower sine; it is not another sound mixed on top.</p>
