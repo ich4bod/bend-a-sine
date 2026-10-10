@@ -20,6 +20,7 @@ const angleCarrier = document.querySelector('#bend-angle-carrier');
 const angleAdded = document.querySelector('#bend-angle-added');
 const angleTotal = document.querySelector('#bend-angle-total');
 const angleResult = document.querySelector('#bend-angle-result');
+const nextSampleReadout = document.querySelector('#bend-next-sample-readout');
 const modulatorPoint = document.querySelector('#bend-modulator-point');
 const resultPoint = document.querySelector('#bend-result-point');
 const carrierLine = document.querySelector('#bend-carrier-wave');
@@ -218,6 +219,15 @@ function refreshPointInspector() {
   angleAdded.textContent = `${formatInspectionValue(added)} rad`;
   angleTotal.textContent = `${formatInspectionValue(total)} rad`;
   angleResult.textContent = formatInspectionValue(Math.sin(total));
+
+  const frozenSettings = { ...settings, index: frozenIndex, bend: 'steady' };
+  const currentValue = sample(index / (100 * CARRIER_HZ), frozenSettings);
+  if (index === points) {
+    nextSampleReadout.textContent = 'Sample 400 is the last plotted sample; there is no next sample.';
+  } else {
+    const nextValue = sample((index + 1) / (100 * CARRIER_HZ), frozenSettings);
+    nextSampleReadout.textContent = `Samples ${index} → ${index + 1}: ${formatInspectionValue(currentValue)} → ${formatInspectionValue(nextValue)}; change ${formatInspectionValue(nextValue - currentValue)} in sine value.`;
+  }
 }
 
 pointControl.addEventListener('input', refreshPointInspector);
