@@ -1,0 +1,30 @@
+{
+  "mode": "phases",
+  "lane": 16,
+  "title": "Bend a sine \u2014 Compare three phase offsets with the same source and depth",
+  "message": "three source phases keep frequency and depth fixed without playing or replacing the kept bend",
+  "rows": [
+    [
+      "phase-quarter",
+      "Source a quarter turn ahead",
+      1,
+      0.25,
+      2
+    ],
+    [
+      "phase-half",
+      "Source a half turn ahead",
+      1,
+      0.5,
+      2
+    ],
+    [
+      "phase-three-quarters",
+      "Source three quarters ahead",
+      1,
+      0.75,
+      2
+    ]
+  ],
+  "help": "These studies hold the source ratio and bend depth fixed. Only its phase changes. Choosing is silent; your kept bend stays put."
+}
