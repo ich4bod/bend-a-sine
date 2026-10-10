@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="One sine bends another. Change the bend before you hear it.">
   <title>Bend a sine</title>
-  <link rel="stylesheet" href="/style.css?v=11">
+  <link rel="stylesheet" href="/style.css?v=12">
   <script type="module" src="/app.mjs?v=17"></script>
 </head>
 <body>
@@ -119,8 +119,11 @@
           </g>
         </svg>
       </div>
-      <p id="bend-repeat-readout">Frozen wave repeats after 1 carrier cycle.</p>
-      <p id="bend-repeat-help">The mark shows one full repeat of this frozen shape. During a falling bend, the heard note keeps changing instead.</p>
+      <details id="bend-repeat-reader">
+        <summary>Where this frozen wave repeats</summary>
+        <p id="bend-repeat-readout">Frozen wave repeats after 1 carrier cycle.</p>
+        <p id="bend-repeat-help">The mark shows one full repeat of this frozen shape. During a falling bend, the heard note keeps changing instead.</p>
+      </details>
     </section>
 
     <details id="bend-phase-inspector">
