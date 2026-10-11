@@ -1,0 +1,17 @@
+{
+  "pointcycle": {
+    "lane": 16,
+    "depends": "nothing",
+    "title": "Bend a sine \u2014 Inspect one carrier cycle before or after the chosen sample",
+    "message": "carrier-cycle navigation changes only the frozen inspected sample and never plays",
+    "buttons": [
+      "bend-point-cycle-back",
+      "bend-point-cycle-forward"
+    ],
+    "copy": {
+      "bend-point-cycle-back": "One carrier cycle earlier",
+      "bend-point-cycle-forward": "One carrier cycle later",
+      "bend-point-cycle-help": "Move the gold point by one hundred plotted samples: one carrier cycle. The bending source may not repeat there. The ends do not wrap; settings and kept waves stay put."
+    }
+  }
+}
