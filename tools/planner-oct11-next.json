@@ -1,0 +1,31 @@
+{
+  "returnsource": {
+    "copy": {
+      "bend-return-source": "Return only the kept source",
+      "bend-return-depth": "Return only the kept depth",
+      "bend-partial-return-help": "Source returns its ratio and starting phase. Depth returns only the index. The bend mode, inspected instant, gold point and kept bend stay put; neither button plays a note."
+    },
+    "buttons": [
+      "bend-return-source",
+      "bend-return-depth"
+    ],
+    "message": "returnsource preserves unrelated state and answers its supplied native experiment"
+  },
+  "carriergap": {
+    "copy": {
+      "bend-carrier-gap-help": "Compare sine values at the same gold point. The difference is signed and belongs to this frozen moment; it is not a difference in loudness. Moving the point stays silent."
+    },
+    "buttons": [],
+    "message": "carriergap preserves unrelated state and answers its supplied native experiment"
+  },
+  "gapinspect": {
+    "copy": {
+      "bend-gap-point": "Inspect the largest plotted gap",
+      "bend-gap-point-help": "Move the gold point to the earliest largest difference among the plotted samples. Neither wave nor the kept bend changes. This is a sampled difference, not the greatest continuous gap or a loudness comparison."
+    },
+    "buttons": [
+      "bend-gap-point"
+    ],
+    "message": "gapinspect preserves unrelated state and answers its supplied native experiment"
+  }
+}
