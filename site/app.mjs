@@ -51,9 +51,11 @@ const keptPanel = document.querySelector('#bend-kept-panel');
 const keptWaveLine = document.querySelector('#bend-kept-wave');
 const keptValues = document.querySelector('#bend-kept-values');
 const plottedGapReadout = document.querySelector('#bend-plotted-gap-readout');
+const plottedGapPointButton = document.querySelector('#bend-gap-point');
 const overlayKeptControl = document.querySelector('#bend-overlay-kept');
 const overlayWaveLine = document.querySelector('#bend-overlay-wave');
 let keptSettings = null;
+let largestPlottedGapIndex = null;
 const points = 400;
 const duration = 4 / CARRIER_HZ;
 const frozenStudies = new Map([
@@ -149,6 +151,7 @@ overlayKeptControl.addEventListener('change', renderKept);
 
 function updatePlottedGap() {
   if (!keptSettings) {
+    largestPlottedGapIndex = null;
     plottedGapReadout.textContent = 'Keep a bend to compare the plotted samples.';
     return;
   }
@@ -164,7 +167,13 @@ function updatePlottedGap() {
       largestIndex = i;
     }
   }
+  largestPlottedGapIndex = largestIndex;
   plottedGapReadout.textContent = `Largest plotted gap: ${largestGap.toFixed(3)} at sample ${largestIndex} of ${points} (${(largestIndex / 100).toFixed(2)} carrier cycles).`;
+}
+
+function plottedGapPointCandidate() {
+  if (!keptSettings || largestPlottedGapIndex === null || Number(pointControl.value) === largestPlottedGapIndex) return null;
+  return largestPlottedGapIndex;
 }
 
 function renderKept() {
@@ -230,6 +239,7 @@ function pointCycleCandidates() {
 function refreshPointInspector() {
   const settings = currentSettings();
   const index = Number(pointControl.value);
+  plottedGapPointButton.disabled = plottedGapPointCandidate() === null;
   const candidates = pointCycleCandidates();
   pointCycleBack.disabled = candidates.previous === null;
   pointCycleForward.disabled = candidates.next === null;
@@ -283,6 +293,12 @@ function refreshPointInspector() {
 }
 
 pointControl.addEventListener('input', refreshPointInspector);
+plottedGapPointButton.addEventListener('click', () => {
+  const candidate = plottedGapPointCandidate();
+  if (plottedGapPointButton.disabled || candidate === null) return;
+  pointControl.value = String(candidate);
+  refreshPointInspector();
+});
 pointCycleBack.addEventListener('click', () => {
   const candidate = pointCycleCandidates().previous;
   if (pointCycleBack.disabled || candidate === null) return;

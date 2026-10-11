@@ -130,6 +130,7 @@ summary { min-height: 45px; padding-block: 8px; cursor: pointer; }
   outline-offset: 3px;
 }
 #bend-plotted-gap > p { margin: 8px 0; }
+#bend-plotted-gap > button { min-height: 45px; font: inherit; }
 #bend-comparisons {
   margin-top: 8px;
   padding: 12px;

@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="One sine bends another. Change the bend before you hear it.">
   <title>Bend a sine</title>
-  <link rel="stylesheet" href="/style.css?v=21">
-  <script type="module" src="/app.mjs?v=28"></script>
+  <link rel="stylesheet" href="/style.css?v=22">
+  <script type="module" src="/app.mjs?v=29"></script>
 </head>
 <body>
   <main class="page">
@@ -220,6 +220,8 @@
         <summary>Read the largest plotted gap</summary>
         <p id="bend-plotted-gap-readout">Keep a bend to compare the plotted samples.</p>
         <p id="bend-plotted-gap-help">This compares the 401 vertices drawn in the current and kept waves. It names the earliest largest sampled gap, not the greatest difference between the continuous curves and not a difference in loudness.</p>
+        <button id="bend-gap-point" type="button" disabled>Inspect the largest plotted gap</button>
+        <p id="bend-gap-point-help">Move the gold point to the earliest largest difference among the plotted samples. Neither wave nor the kept bend changes. This is a sampled difference, not the greatest continuous gap or a loudness comparison.</p>
       </details>
     </details>
 
