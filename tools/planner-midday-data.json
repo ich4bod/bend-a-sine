@@ -1,0 +1,34 @@
+{
+  "slug": "bend-a-sine",
+  "mode": "phases",
+  "lane": 16,
+  "title": "Bend a sine — Compare three depths while the source keeps its five-quarter rhythm",
+  "group": "One source, three depths",
+  "helpID": "bend-depth-study-help",
+  "help": "The source keeps five cycles for every four carrier cycles, starts at a quarter turn and keeps a steady index. Only the bend depth changes. The finite note envelope stays the same; that does not promise equal perceived loudness.",
+  "rows": [
+    [
+      "depth-five-four-half",
+      "Five-quarter source, index one-half",
+      1.25,
+      0.25,
+      0.5
+    ],
+    [
+      "depth-five-four-two",
+      "Five-quarter source, index two",
+      1.25,
+      0.25,
+      2
+    ],
+    [
+      "depth-five-four-four",
+      "Five-quarter source, index four",
+      1.25,
+      0.25,
+      4
+    ]
+  ],
+  "depends": "nothing",
+  "message": "phases choices preserve exact authored data and the independent kept experiment"
+}
