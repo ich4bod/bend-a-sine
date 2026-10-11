@@ -1,0 +1,34 @@
+{
+  "slug": "bend-a-sine",
+  "mode": "phases",
+  "lane": 16,
+  "title": "Bend a sine \u2014 Turn a half-speed source through three starting directions",
+  "group": "A slower source, three starts",
+  "helpID": "bend-slow-start-help",
+  "help": "The source makes one cycle for every two carrier cycles, with a steady index of two. Its opening phase changes, not its speed or depth. These are frozen settings; choosing or using one stays silent, and Play remains separate.",
+  "rows": [
+    [
+      "slow-start-level",
+      "Half-speed source starts level",
+      0.5,
+      0,
+      2
+    ],
+    [
+      "slow-start-positive",
+      "Half-speed source starts positive",
+      0.5,
+      0.25,
+      2
+    ],
+    [
+      "slow-start-negative",
+      "Half-speed source starts negative",
+      0.5,
+      0.75,
+      2
+    ]
+  ],
+  "depends": "nothing",
+  "message": "phases comparisons preserve the authored experiment without replacing its memory"
+}
