@@ -1,0 +1,32 @@
+{
+  "mode": "phases",
+  "lane": 16,
+  "depends": "nothing",
+  "title": "Bend a sine \u2014 Hear fifth-quarter fourth-third and two-third frozen sources",
+  "message": "three rational sources retain finite notes and preserve the independently kept bend",
+  "rows": [
+    [
+      "ratio-five-four",
+      "Five-quarter source",
+      1.25,
+      0,
+      2
+    ],
+    [
+      "ratio-four-three",
+      "Four-third source",
+      1.3333333333333333,
+      0.25,
+      2
+    ],
+    [
+      "ratio-two-three",
+      "Two-third source",
+      0.6666666666666666,
+      0.5,
+      2
+    ]
+  ],
+  "help": "These sources complete five cycles in four carrier cycles, four in three, or two in three. Their note envelope stays the same; that does not promise equal perceived loudness.",
+  "helpID": "bend-rational-study-help"
+}
