@@ -38,6 +38,8 @@ const stopButton = document.querySelector('#bend-stop');
 const soundStatus = document.querySelector('#bend-sound-status');
 const keepButton = document.querySelector('#bend-keep');
 const returnButton = document.querySelector('#bend-return');
+const returnSourceButton = document.querySelector('#bend-return-source');
+const returnDepthButton = document.querySelector('#bend-return-depth');
 const forgetButton = document.querySelector('#bend-forget');
 const studyControl = document.querySelector('#bend-study');
 const studyApplyButton = document.querySelector('#bend-study-apply');
@@ -174,6 +176,8 @@ function renderKept() {
     keptValues.textContent = 'No bend kept.';
     keptPhase.textContent = 'No source phase kept.';
     returnButton.disabled = true;
+    returnSourceButton.disabled = true;
+    returnDepthButton.disabled = true;
     forgetButton.disabled = true;
     listenKeptButton.disabled = true;
     comparePlayButton.disabled = true;
@@ -196,7 +200,11 @@ function renderKept() {
   keptPlot.removeAttribute('hidden');
   keptValues.textContent = `Kept: ratio ${keptSettings.ratio} : 1 · index ${keptSettings.index.toFixed(2)} · ${keptSettings.bend} · at ${keptSettings.moment.toFixed(2)} seconds.`;
   keptPhase.textContent = `Kept source phase: ${keptSettings.phase ?? 0} cycles.`;
-  returnButton.disabled = sameSettings(keptSettings, currentSettings());
+  const settings = currentSettings();
+  returnButton.disabled = sameSettings(keptSettings, settings);
+  returnSourceButton.disabled = keptSettings.ratio === settings.ratio
+    && (keptSettings.phase ?? 0) === settings.phase;
+  returnDepthButton.disabled = keptSettings.index === settings.index;
   forgetButton.disabled = false;
   listenKeptButton.disabled = false;
   comparePlayButton.disabled = false;
@@ -438,6 +446,23 @@ function settingsChanged() {
   refresh();
   updateStudyEligibility();
 }
+
+returnSourceButton.addEventListener('click', () => {
+  if (!keptSettings) return;
+  const settings = currentSettings();
+  if (keptSettings.ratio === settings.ratio && (keptSettings.phase ?? 0) === settings.phase) return;
+  ratioControl.value = String(keptSettings.ratio);
+  phaseControl.value = String(keptSettings.phase ?? 0);
+  settingsChanged();
+});
+
+returnDepthButton.addEventListener('click', () => {
+  if (!keptSettings) return;
+  const settings = currentSettings();
+  if (keptSettings.index === settings.index) return;
+  indexControl.value = String(keptSettings.index);
+  settingsChanged();
+});
 
 returnButton.addEventListener('click', () => {
   if (!keptSettings || sameSettings(keptSettings, currentSettings())) return;

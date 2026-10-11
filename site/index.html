@@ -6,7 +6,7 @@
   <meta name="description" content="One sine bends another. Change the bend before you hear it.">
   <title>Bend a sine</title>
   <link rel="stylesheet" href="/style.css?v=21">
-  <script type="module" src="/app.mjs?v=26"></script>
+  <script type="module" src="/app.mjs?v=27"></script>
 </head>
 <body>
   <main class="page">
@@ -191,10 +191,13 @@
       <div class="keep-controls">
         <button id="bend-keep" type="button">Keep this bend</button>
         <button id="bend-return" type="button" disabled>Return to kept bend</button>
+        <button id="bend-return-source" type="button" disabled>Return only the kept source</button>
+        <button id="bend-return-depth" type="button" disabled>Return only the kept depth</button>
         <button id="bend-forget" type="button" disabled>Forget kept bend</button>
         <button id="bend-listen-kept" type="button" disabled>Hear kept bend</button>
         <button id="bend-compare-play" type="button" disabled>Hear kept, then current</button>
       </div>
+      <p id="bend-partial-return-help">Source returns its ratio and starting phase. Depth returns only the index. The bend mode, inspected instant, gold point and kept bend stay put; neither button plays a note.</p>
       <p id="bend-compare-help">Two 0.8-second notes with 0.25 seconds of silence between. Each keeps the same amplitude envelope. Stop ends the whole comparison.</p>
       <p id="bend-keep-help">The orange wave keeps its own ratio, index, bend mode and inspected instant. Hearing it does not change the cyan wave. Return changes the controls only; it does not play a note.</p>
       <p id="bend-kept-values">No bend kept.</p>
