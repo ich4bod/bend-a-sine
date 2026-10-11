@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="One sine bends another. Change the bend before you hear it.">
   <title>Bend a sine</title>
-  <link rel="stylesheet" href="/style.css?v=20">
-  <script type="module" src="/app.mjs?v=25"></script>
+  <link rel="stylesheet" href="/style.css?v=21">
+  <script type="module" src="/app.mjs?v=26"></script>
 </head>
 <body>
   <main class="page">
@@ -135,6 +135,11 @@
       <summary>Inspect one point in both waves</summary>
       <label for="bend-point">Point along the four cycles</label>
       <input id="bend-point" type="range" min="0" max="400" step="1" value="0">
+      <div class="point-cycle-controls">
+        <button id="bend-point-cycle-back" type="button">One carrier cycle earlier</button>
+        <button id="bend-point-cycle-forward" type="button">One carrier cycle later</button>
+      </div>
+      <p id="bend-point-cycle-help">Move the gold point by one hundred plotted samples: one carrier cycle. The bending source may not repeat there. The ends do not wrap; settings and kept waves stay put.</p>
       <p id="bend-point-readout">At 0.00 carrier cycles: bending sine 0.000 · resulting wave 0.000.</p>
       <dl id="bend-angle-parts">
         <div><dt>Carrier angle</dt><dd id="bend-angle-carrier">0.000 rad</dd></div>

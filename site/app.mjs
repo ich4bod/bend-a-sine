@@ -15,6 +15,8 @@ const repeatEnd = document.querySelector('#bend-repeat-end');
 const repeatReadout = document.querySelector('#bend-repeat-readout');
 const pointInspector = document.querySelector('#bend-phase-inspector');
 const pointControl = document.querySelector('#bend-point');
+const pointCycleBack = document.querySelector('#bend-point-cycle-back');
+const pointCycleForward = document.querySelector('#bend-point-cycle-forward');
 const pointReadout = document.querySelector('#bend-point-readout');
 const keptPointReadout = document.querySelector('#bend-kept-point-readout');
 const angleCarrier = document.querySelector('#bend-angle-carrier');
@@ -206,9 +208,22 @@ function formatInspectionValue(value) {
   return (Math.abs(value) < 0.0005 ? 0 : value).toFixed(3);
 }
 
+function pointCycleCandidates() {
+  const index = Number(pointControl.value);
+  const previous = index - 100;
+  const next = index + 100;
+  return {
+    previous: previous >= 0 && previous <= points ? previous : null,
+    next: next >= 0 && next <= points ? next : null,
+  };
+}
+
 function refreshPointInspector() {
   const settings = currentSettings();
   const index = Number(pointControl.value);
+  const candidates = pointCycleCandidates();
+  pointCycleBack.disabled = candidates.previous === null;
+  pointCycleForward.disabled = candidates.next === null;
   if (!keptSettings) {
     keptPointReadout.textContent = 'Keep a bend to compare this point.';
   } else {
@@ -254,6 +269,18 @@ function refreshPointInspector() {
 }
 
 pointControl.addEventListener('input', refreshPointInspector);
+pointCycleBack.addEventListener('click', () => {
+  const candidate = pointCycleCandidates().previous;
+  if (pointCycleBack.disabled || candidate === null) return;
+  pointControl.value = String(candidate);
+  refreshPointInspector();
+});
+pointCycleForward.addEventListener('click', () => {
+  const candidate = pointCycleCandidates().next;
+  if (pointCycleForward.disabled || candidate === null) return;
+  pointControl.value = String(candidate);
+  refreshPointInspector();
+});
 pointInspector.addEventListener('toggle', refreshPointInspector);
 
 function refresh() {
