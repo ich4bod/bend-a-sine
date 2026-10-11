@@ -1,0 +1,34 @@
+{
+  "slug": "bend-a-sine",
+  "mode": "phases",
+  "lane": 16,
+  "title": "Bend a sine \u2014 Compare a level source with a positive and negative starting bend",
+  "rows": [
+    [
+      "start-level",
+      "Source starts level",
+      1,
+      0,
+      1
+    ],
+    [
+      "start-positive",
+      "Source starts at its positive peak",
+      1,
+      0.25,
+      1
+    ],
+    [
+      "start-negative",
+      "Source starts at its negative peak",
+      1,
+      0.75,
+      1
+    ]
+  ],
+  "group": "Three starting directions",
+  "help": "These three frozen waves share one source cycle per carrier cycle and index one. The source starts level, at its positive peak, or at its negative peak. Choosing or using one stays silent; Play is your separate choice.",
+  "helpID": "bend-starting-direction-help",
+  "depends": "nothing",
+  "message": "phases studies preserve their supplied values and independent memory"
+}
