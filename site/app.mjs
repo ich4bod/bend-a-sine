@@ -58,6 +58,9 @@ const frozenStudies = new Map([
   ['octave', { ratio: 2, phase: 0, index: 2, bend: 'steady', moment: 0 }],
   ['fifths', { ratio: 1.5, phase: 0.25, index: 2, bend: 'steady', moment: 0 }],
   ['fast', { ratio: 3, phase: 0.5, index: 1, bend: 'steady', moment: 0 }],
+  ['phase-quarter', { ratio: 1, phase: 0.25, index: 2, bend: 'steady', moment: 0 }],
+  ['phase-half', { ratio: 1, phase: 0.5, index: 2, bend: 'steady', moment: 0 }],
+  ['phase-three-quarters', { ratio: 1, phase: 0.75, index: 2, bend: 'steady', moment: 0 }],
 ]);
 const repeatCyclesByRatio = new Map([
   [0.5, 2],
