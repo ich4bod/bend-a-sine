@@ -61,6 +61,9 @@ const frozenStudies = new Map([
   ['phase-quarter', { ratio: 1, phase: 0.25, index: 2, bend: 'steady', moment: 0 }],
   ['phase-half', { ratio: 1, phase: 0.5, index: 2, bend: 'steady', moment: 0 }],
   ['phase-three-quarters', { ratio: 1, phase: 0.75, index: 2, bend: 'steady', moment: 0 }],
+  ['ratio-five-four', { ratio: 1.25, phase: 0, index: 2, bend: 'steady', moment: 0 }],
+  ['ratio-four-three', { ratio: 1.3333333333333333, phase: 0.25, index: 2, bend: 'steady', moment: 0 }],
+  ['ratio-two-three', { ratio: 0.6666666666666666, phase: 0.5, index: 2, bend: 'steady', moment: 0 }],
 ]);
 const repeatCyclesByRatio = new Map([
   [0.5, 2],

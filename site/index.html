@@ -6,7 +6,7 @@
   <meta name="description" content="One sine bends another. Change the bend before you hear it.">
   <title>Bend a sine</title>
   <link rel="stylesheet" href="/style.css?v=20">
-  <script type="module" src="/app.mjs?v=24"></script>
+  <script type="module" src="/app.mjs?v=25"></script>
 </head>
 <body>
   <main class="page">
@@ -167,12 +167,16 @@
               <option value="phase-half">Source a half turn ahead</option>
               <option value="phase-three-quarters">Source three quarters ahead</option>
             </optgroup>
+            <option value="ratio-five-four">Five-quarter source</option>
+            <option value="ratio-four-three">Four-third source</option>
+            <option value="ratio-two-three">Two-third source</option>
           </select>
         </div>
         <button id="bend-study-apply" type="button">Use this bend</button>
       </div>
       <p id="bend-study-help">Choose a frozen study without playing it. The source, phase and index change together; your kept bend stays put.</p>
       <p id="bend-phase-study-help">These studies hold the source ratio and bend depth fixed. Only its phase changes. Choosing is silent; your kept bend stays put.</p>
+      <p id="bend-rational-study-help">These sources complete five cycles in four carrier cycles, four in three, or two in three. Their note envelope stays the same; that does not promise equal perceived loudness.</p>
     </details>
 
     <details id="bend-memory">
