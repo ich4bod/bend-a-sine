@@ -74,6 +74,9 @@ const frozenStudies = new Map([
   ['start-level', { ratio: 1, phase: 0, index: 1, bend: 'steady', moment: 0 }],
   ['start-positive', { ratio: 1, phase: 0.25, index: 1, bend: 'steady', moment: 0 }],
   ['start-negative', { ratio: 1, phase: 0.75, index: 1, bend: 'steady', moment: 0 }],
+  ['depth-five-four-half', { ratio: 1.25, phase: 0.25, index: 0.5, bend: 'steady', moment: 0 }],
+  ['depth-five-four-two', { ratio: 1.25, phase: 0.25, index: 2, bend: 'steady', moment: 0 }],
+  ['depth-five-four-four', { ratio: 1.25, phase: 0.25, index: 4, bend: 'steady', moment: 0 }],
 ]);
 const repeatCyclesByRatio = new Map([
   [0.5, 2],
