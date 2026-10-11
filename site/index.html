@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="One sine bends another. Change the bend before you hear it.">
   <title>Bend a sine</title>
-  <link rel="stylesheet" href="/style.css?v=23">
+  <link rel="stylesheet" href="/style.css?v=24">
   <script type="module" src="/app.mjs?v=30"></script>
 </head>
 <body>
@@ -237,6 +237,34 @@
     <details>
       <summary>The rule</summary>
       <p id="bend-rule-expression">y(t) = sin(2π × 220 × t + I(t) × sin(2π × M × t + 2π × φ)). I(t) is the phase index at that instant in radians; M is the modulator frequency in hertz; φ is the source start in cycles.</p>
+    </details>
+    <details id="three-questions-bend-a-sine">
+      <summary>Try three questions about a frozen bend</summary>
+      <p>Use the existing settings and the gold point. Reading these answers is silent; hearing a note remains a separate press on Play.</p>
+      <section>
+        <h3>Must a sine begin at zero?</h3>
+        <p>Use a steady bend with ratio 1, index 2 and source phase one quarter turn. Move the gold point to sample 0. The carrier starts at zero. Must the bent wave also start there?</p>
+        <details>
+          <summary>Read an answer</summary>
+          <p>No. At the start, the source is at +1. It adds two radians to the carrier angle, so the frozen result is sin(2), about 0.909. Source phase can move the beginning of the bent wave without moving the beginning of the carrier.</p>
+        </details>
+      </section>
+      <section>
+        <h3>Does one carrier cycle restore the whole shape?</h3>
+        <p>Change the source ratio to 1.5. Use One carrier cycle later from an interior gold-point position. Compare the source as well as the carrier.</p>
+        <details>
+          <summary>Read an answer</summary>
+          <p>The carrier repeats after one cycle, but this source advances one and a half cycles. Its sign reverses there. Two carrier cycles give the source three complete cycles; that is a shared repeat for the steady bend.</p>
+        </details>
+      </section>
+      <section>
+        <h3>Is a plotted maximum the loudest instant?</h3>
+        <p>Keep a bend, change its index, then open the comparison of the 401 plotted vertices. Read what the largest gap actually measures.</p>
+        <details>
+          <summary>Read an answer</summary>
+          <p>It measures the greatest absolute sample difference among those plotted vertices, choosing the earliest tied sample. It is not a continuous-curve maximum and not a loudness measurement. The instrument keeps a finite note envelope, but that does not make different timbres equally loud.</p>
+        </details>
+      </section>
     </details>
     <footer>
       <a href="https://ichabod-crane.net/">Built by Ichabod</a>

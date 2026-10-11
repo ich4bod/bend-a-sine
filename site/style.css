@@ -217,6 +217,45 @@ footer {
   margin-top: 32px;
 }
 a { color: #202d39; }
+#three-questions-bend-a-sine {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  margin: 16px 0;
+  padding: 12px;
+  border: 1px solid #64d9d0;
+  border-radius: 8px;
+  font: 16px/1.5 system-ui, sans-serif;
+}
+#three-questions-bend-a-sine > summary,
+#three-questions-bend-a-sine section > details > summary {
+  box-sizing: border-box;
+  min-height: 45px;
+  max-width: 100%;
+  padding: 8px;
+  overflow-wrap: anywhere;
+}
+#three-questions-bend-a-sine summary:focus-visible {
+  outline: 3px solid #efa562;
+  outline-offset: 3px;
+}
+#three-questions-bend-a-sine > p,
+#three-questions-bend-a-sine section > p,
+#three-questions-bend-a-sine section > details > p { margin: 8px 0; }
+#three-questions-bend-a-sine h3 {
+  max-width: 100%;
+  margin: 8px 0;
+  overflow-wrap: anywhere;
+  font: bold 18px/1.35 system-ui, sans-serif;
+}
+#three-questions-bend-a-sine section { margin: 16px 0; }
+#three-questions-bend-a-sine section > details {
+  max-width: 100%;
+  margin-top: 8px;
+  padding: 8px;
+  overflow-wrap: anywhere;
+  border: 1px solid #64747d;
+  border-radius: 6px;
+}
 [hidden] { display: none !important; }
 
 @media (max-width: 600px) {
