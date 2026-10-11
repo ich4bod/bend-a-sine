@@ -1,0 +1,35 @@
+{
+  "slug": "bend-a-sine",
+  "mode": "phases",
+  "lane": 16,
+  "title": "Bend a sine — Keep a positive opening while the source runs half once or twice",
+  "group": "One opening, three source speeds",
+  "helpID": "bend-source-speed-help",
+  "help": "All three waves start the source at its positive peak with steady index two. Half-speed, equal-speed and double-speed sources share that opening sample, but do not keep the same shape. The finite envelope stays unchanged. Choosing is silent; Play is separate.",
+  "rows": [
+    [
+      "opening-half-source",
+      "Positive opening, half-speed source",
+      0.5,
+      0.25,
+      2
+    ],
+    [
+      "opening-equal-source",
+      "Positive opening, equal-speed source",
+      1,
+      0.25,
+      2
+    ],
+    [
+      "opening-double-source",
+      "Positive opening, double-speed source",
+      2,
+      0.25,
+      2
+    ]
+  ],
+  "depends": "nothing",
+  "message": "phases experiments keep the supplied choices silent and reversible",
+  "facts": "Rows[id,label,ratio,phaseInTurns,index] produce {ratio,phase,index,bend:\"steady\",moment:0}. ratio.5/1/2 are existing native options. Phase.25 is a quarter TURN. At plotted t0 source=sin(π/2)=1, frozen bent sample=sin(2)=.9092974268256817 for all three. Half source needs two carrier cycles to repeat; equal and double repeat after one. Existing model stays unchanged."
+}
