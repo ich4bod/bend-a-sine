@@ -80,6 +80,9 @@ const frozenStudies = new Map([
   ['opening-half-source', { ratio: 0.5, phase: 0.25, index: 2, bend: 'steady', moment: 0 }],
   ['opening-equal-source', { ratio: 1, phase: 0.25, index: 2, bend: 'steady', moment: 0 }],
   ['opening-double-source', { ratio: 2, phase: 0.25, index: 2, bend: 'steady', moment: 0 }],
+  ['slow-start-level', { ratio: 0.5, phase: 0, index: 2, bend: 'steady', moment: 0 }],
+  ['slow-start-positive', { ratio: 0.5, phase: 0.25, index: 2, bend: 'steady', moment: 0 }],
+  ['slow-start-negative', { ratio: 0.5, phase: 0.75, index: 2, bend: 'steady', moment: 0 }],
 ]);
 const repeatCyclesByRatio = new Map([
   [0.5, 2],

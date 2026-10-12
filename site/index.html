@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="One sine bends another. Change the bend before you hear it.">
   <title>Bend a sine</title>
-  <link rel="stylesheet" href="/style.css?v=27">
-  <script type="module" src="/app.mjs?v=32"></script>
+  <link rel="stylesheet" href="/style.css?v=28">
+  <script type="module" src="/app.mjs?v=33"></script>
 </head>
 <body>
   <main class="page">
@@ -192,11 +192,17 @@
               <option value="opening-equal-source">Positive opening, equal-speed source</option>
               <option value="opening-double-source">Positive opening, double-speed source</option>
             </optgroup>
+            <optgroup label="A slower source, three starts">
+              <option value="slow-start-level">Half-speed source starts level</option>
+              <option value="slow-start-positive">Half-speed source starts positive</option>
+              <option value="slow-start-negative">Half-speed source starts negative</option>
+            </optgroup>
           </select>
         </div>
         <button id="bend-study-apply" type="button">Use this bend</button>
       </div>
       <p id="bend-study-help">Choose a frozen study without playing it. The source, phase and index change together; your kept bend stays put.</p>
+      <p id="bend-slow-start-help">The source makes one cycle for every two carrier cycles, with a steady index of two. Its opening phase changes, not its speed or depth. These are frozen settings; choosing or using one stays silent, and Play remains separate.</p>
       <p id="bend-starting-direction-help">These three frozen waves share one source cycle per carrier cycle and index one. The source starts level, at its positive peak, or at its negative peak. Choosing or using one stays silent; Play is your separate choice.</p>
       <p id="bend-phase-study-help">These studies hold the source ratio and bend depth fixed. Only its phase changes. Choosing is silent; your kept bend stays put.</p>
       <p id="bend-rational-study-help">These sources complete five cycles in four carrier cycles, four in three, or two in three. Their note envelope stays the same; that does not promise equal perceived loudness.</p>
