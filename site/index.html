@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="One sine bends another. Change the bend before you hear it.">
   <title>Bend a sine</title>
-  <link rel="stylesheet" href="/style.css?v=28">
-  <script type="module" src="/app.mjs?v=33"></script>
+  <link rel="stylesheet" href="/style.css?v=29">
+  <script type="module" src="/app.mjs?v=34"></script>
 </head>
 <body>
   <main class="page">
@@ -197,6 +197,11 @@
               <option value="slow-start-positive">Half-speed source starts positive</option>
               <option value="slow-start-negative">Half-speed source starts negative</option>
             </optgroup>
+            <optgroup label="Two-thirds source, three depths">
+              <option value="third-depth-half">Two-thirds source, half-depth</option>
+              <option value="third-depth-one">Two-thirds source, depth one</option>
+              <option value="third-depth-three">Two-thirds source, depth three</option>
+            </optgroup>
           </select>
         </div>
         <button id="bend-study-apply" type="button">Use this bend</button>
@@ -206,6 +211,7 @@
       <p id="bend-starting-direction-help">These three frozen waves share one source cycle per carrier cycle and index one. The source starts level, at its positive peak, or at its negative peak. Choosing or using one stays silent; Play is your separate choice.</p>
       <p id="bend-phase-study-help">These studies hold the source ratio and bend depth fixed. Only its phase changes. Choosing is silent; your kept bend stays put.</p>
       <p id="bend-rational-study-help">These sources complete five cycles in four carrier cycles, four in three, or two in three. Their note envelope stays the same; that does not promise equal perceived loudness.</p>
+      <p id="bend-two-thirds-depth-help">The source completes two cycles in three carrier cycles and starts a quarter turn ahead. Only the steady bend depth changes. The finite envelope is unchanged, not the perceived loudness. Using a study stays silent.</p>
       <p id="bend-source-speed-help">All three waves start the source at its positive peak with steady index two. Half-speed, equal-speed and double-speed sources share that opening sample, but do not keep the same shape. The finite envelope stays unchanged. Choosing is silent; Play is separate.</p>
       <p id="bend-depth-study-help">The source keeps five cycles for every four carrier cycles, starts at a quarter turn and keeps a steady index. Only the bend depth changes. The finite note envelope stays the same; that does not promise equal perceived loudness.</p>
     </details>

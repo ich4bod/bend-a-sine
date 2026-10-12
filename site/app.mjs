@@ -83,6 +83,9 @@ const frozenStudies = new Map([
   ['slow-start-level', { ratio: 0.5, phase: 0, index: 2, bend: 'steady', moment: 0 }],
   ['slow-start-positive', { ratio: 0.5, phase: 0.25, index: 2, bend: 'steady', moment: 0 }],
   ['slow-start-negative', { ratio: 0.5, phase: 0.75, index: 2, bend: 'steady', moment: 0 }],
+  ['third-depth-half', { ratio: 0.6666666666666666, phase: 0.25, index: 0.5, bend: 'steady', moment: 0 }],
+  ['third-depth-one', { ratio: 0.6666666666666666, phase: 0.25, index: 1, bend: 'steady', moment: 0 }],
+  ['third-depth-three', { ratio: 0.6666666666666666, phase: 0.25, index: 3, bend: 'steady', moment: 0 }],
 ]);
 const repeatCyclesByRatio = new Map([
   [0.5, 2],
