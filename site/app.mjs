@@ -43,6 +43,7 @@ const returnSourceButton = document.querySelector('#bend-return-source');
 const returnDepthButton = document.querySelector('#bend-return-depth');
 const forgetButton = document.querySelector('#bend-forget');
 const studyControl = document.querySelector('#bend-study');
+const selectedChoiceNote = document.querySelector('#choice-note-bend-a-sine');
 const studyApplyButton = document.querySelector('#bend-study-apply');
 const listenKeptButton = document.querySelector('#bend-listen-kept');
 const comparePlayButton = document.querySelector('#bend-compare-play');
@@ -86,6 +87,11 @@ const frozenStudies = new Map([
   ['third-depth-half', { ratio: 0.6666666666666666, phase: 0.25, index: 0.5, bend: 'steady', moment: 0 }],
   ['third-depth-one', { ratio: 0.6666666666666666, phase: 0.25, index: 1, bend: 'steady', moment: 0 }],
   ['third-depth-three', { ratio: 0.6666666666666666, phase: 0.25, index: 3, bend: 'steady', moment: 0 }],
+]);
+const selectedChoiceNotes = new Map([
+  ['third-depth-half', 'About the selected choice: At a quarter-turn source start, index one-half opens at about 0.479. The source still takes three carrier cycles to make two cycles.'],
+  ['third-depth-one', 'About the selected choice: At the same quarter-turn start, index one opens at about 0.841. Only depth changed; this is a waveform sample, not a loudness measurement.'],
+  ['third-depth-three', 'About the selected choice: At the same quarter-turn start, index three opens at about 0.141. A deeper bend can give a smaller opening sample because the outer sine turns back.'],
 ]);
 const repeatCyclesByRatio = new Map([
   [0.5, 2],
@@ -331,6 +337,12 @@ pointInspector.addEventListener('toggle', refreshPointInspector);
 function refresh() {
   render();
   renderKept();
+  updateSelectedChoiceNote();
+}
+
+function updateSelectedChoiceNote() {
+  selectedChoiceNote.textContent = selectedChoiceNotes.get(studyControl.value)
+    ?? 'Other choices keep their existing descriptions.';
 }
 
 function updateStudyEligibility() {
@@ -338,7 +350,10 @@ function updateStudyEligibility() {
   studyApplyButton.disabled = !study || sameSettings(currentSettings(), study);
 }
 
-studyControl.addEventListener('change', updateStudyEligibility);
+studyControl.addEventListener('change', () => {
+  updateStudyEligibility();
+  updateSelectedChoiceNote();
+});
 studyApplyButton.addEventListener('click', () => {
   const study = frozenStudies.get(studyControl.value);
   if (!study || sameSettings(currentSettings(), study)) return;
