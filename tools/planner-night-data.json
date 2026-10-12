@@ -1,0 +1,35 @@
+{
+  "slug": "bend-a-sine",
+  "mode": "phases",
+  "lane": 16,
+  "title": "Bend a sine — Deepen a two-thirds-speed source without changing its start",
+  "group": "Two-thirds source, three depths",
+  "helpID": "bend-two-thirds-depth-help",
+  "help": "The source completes two cycles in three carrier cycles and starts a quarter turn ahead. Only the steady bend depth changes. The finite envelope is unchanged, not the perceived loudness. Using a study stays silent.",
+  "rows": [
+    [
+      "third-depth-half",
+      "Two-thirds source, half-depth",
+      0.6666666666666666,
+      0.25,
+      0.5
+    ],
+    [
+      "third-depth-one",
+      "Two-thirds source, depth one",
+      0.6666666666666666,
+      0.25,
+      1
+    ],
+    [
+      "third-depth-three",
+      "Two-thirds source, depth three",
+      0.6666666666666666,
+      0.25,
+      3
+    ]
+  ],
+  "depends": "nothing",
+  "message": "phases experiments keep their distinct rules and exact supplied choices",
+  "facts": "All ratio values are the existing native0.6666666666666666. All phase=.25, bend steady,moment0. Opening value sin(index): .479425538604203,.8414709848078965,.1411200080598672 respectively; larger index does not monotonically increase that sample. Exact native index options verified before posting."
+}
