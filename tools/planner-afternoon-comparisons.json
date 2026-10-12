@@ -1,0 +1,125 @@
+{
+  "equal-depth": {
+    "slug": "bend-a-sine",
+    "mode": "phases",
+    "lane": 16,
+    "depends": 909,
+    "title": "Bend a sine \u2014 Increase a same-speed bend while its start stays at zero",
+    "group": "Same-speed source, three depths",
+    "rows": [
+      [
+        "equal-depth-0",
+        "Source 1 times carrier, depth 0.5",
+        1,
+        0,
+        0.5
+      ],
+      [
+        "equal-depth-1",
+        "Source 1 times carrier, depth 2",
+        1,
+        0,
+        2
+      ],
+      [
+        "equal-depth-2",
+        "Source 1 times carrier, depth 6",
+        1,
+        0,
+        6
+      ]
+    ],
+    "notes": [
+      "The source advances 1 carrier-rate multiples and starts 0 cycles ahead. Steady bend depth is 0.5. Using stays silent; the finite envelope stays fixed, not perceived loudness.",
+      "The source advances 1 carrier-rate multiples and starts 0 cycles ahead. Steady bend depth is 2. Using stays silent; the finite envelope stays fixed, not perceived loudness.",
+      "The source advances 1 carrier-rate multiples and starts 0 cycles ahead. Steady bend depth is 6. Using stays silent; the finite envelope stays fixed, not perceived loudness."
+    ],
+    "noteID": "choice-note-bend-a-sine",
+    "noteLead": "About the selected choice: ",
+    "picker": "bend-study",
+    "facts": "All native values are existing options/slider steps. Steady mode,moment0. Model y(t)=sin(2*pi*t + index*sin(2*pi*ratio*t+2*pi*phase)). Opening mathematical samples [0.0, 0.0, 0.0]. Floating-point near zero is not a new pitch or exact numerical zero claim.",
+    "message": "equal-depth choices preserve exact data silent selection and independent memory"
+  },
+  "three-halves-start": {
+    "slug": "bend-a-sine",
+    "mode": "phases",
+    "lane": 16,
+    "depends": 909,
+    "title": "Bend a sine \u2014 Turn a three-halves-speed source through three starts",
+    "group": "Three-halves source, three starts",
+    "rows": [
+      [
+        "three-halves-start-0",
+        "Three-halves source, start 0 cycles",
+        1.5,
+        0,
+        2
+      ],
+      [
+        "three-halves-start-1",
+        "Three-halves source, start 0.25 cycles",
+        1.5,
+        0.25,
+        2
+      ],
+      [
+        "three-halves-start-2",
+        "Three-halves source, start 0.5 cycles",
+        1.5,
+        0.5,
+        2
+      ]
+    ],
+    "notes": [
+      "The source advances 1.5 carrier-rate multiples and starts 0 cycles ahead. Steady bend depth is 2. Using stays silent; the finite envelope stays fixed, not perceived loudness.",
+      "The source advances 1.5 carrier-rate multiples and starts 0.25 cycles ahead. Steady bend depth is 2. Using stays silent; the finite envelope stays fixed, not perceived loudness.",
+      "The source advances 1.5 carrier-rate multiples and starts 0.5 cycles ahead. Steady bend depth is 2. Using stays silent; the finite envelope stays fixed, not perceived loudness."
+    ],
+    "noteID": "choice-note-bend-a-sine",
+    "noteLead": "About the selected choice: ",
+    "picker": "bend-study",
+    "facts": "All native values are existing options/slider steps. Steady mode,moment0. Model y(t)=sin(2*pi*t + index*sin(2*pi*ratio*t+2*pi*phase)). Opening mathematical samples [0.0, 0.9092974268256817, 2.4492935982947064e-16]. Floating-point near zero is not a new pitch or exact numerical zero claim.",
+    "message": "three-halves-start choices preserve exact data silent selection and independent memory"
+  },
+  "triple-depth": {
+    "slug": "bend-a-sine",
+    "mode": "phases",
+    "lane": 16,
+    "depends": 909,
+    "title": "Bend a sine \u2014 Deepen a triple-speed source at a quarter-turn start",
+    "group": "Triple source, three depths",
+    "rows": [
+      [
+        "triple-depth-0",
+        "Source 3 times carrier, depth 0.5",
+        3,
+        0.25,
+        0.5
+      ],
+      [
+        "triple-depth-1",
+        "Source 3 times carrier, depth 1",
+        3,
+        0.25,
+        1
+      ],
+      [
+        "triple-depth-2",
+        "Source 3 times carrier, depth 2",
+        3,
+        0.25,
+        2
+      ]
+    ],
+    "notes": [
+      "The source advances 3 carrier-rate multiples and starts 0.25 cycles ahead. Steady bend depth is 0.5. Using stays silent; the finite envelope stays fixed, not perceived loudness.",
+      "The source advances 3 carrier-rate multiples and starts 0.25 cycles ahead. Steady bend depth is 1. Using stays silent; the finite envelope stays fixed, not perceived loudness.",
+      "The source advances 3 carrier-rate multiples and starts 0.25 cycles ahead. Steady bend depth is 2. Using stays silent; the finite envelope stays fixed, not perceived loudness."
+    ],
+    "noteID": "choice-note-bend-a-sine",
+    "noteLead": "About the selected choice: ",
+    "picker": "bend-study",
+    "facts": "All native values are existing options/slider steps. Steady mode,moment0. Model y(t)=sin(2*pi*t + index*sin(2*pi*ratio*t+2*pi*phase)). Opening mathematical samples [0.479425538604203, 0.8414709848078965, 0.9092974268256817]. Floating-point near zero is not a new pitch or exact numerical zero claim.",
+    "message": "triple-depth choices preserve exact data silent selection and independent memory"
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "slug": "bend-a-sine",
+  "lane": 16,
+  "title": "Bend a sine \u2014 Ask why the frozen wave can begin above zero",
+  "id": "three-questions-bend-a-sine",
+  "summary": "Questions about a frozen bend",
+  "lead": "Use the existing settings and the gold point. Reading these answers is silent; hearing a note remains a separate press on Play.",
+  "questions": [
+    {
+      "title": "Must a sine begin at zero?",
+      "prompt": "Use a steady bend with ratio 1, index 2 and source phase one quarter turn. Move the gold point to sample 0. The carrier starts at zero. Must the bent wave also start there?",
+      "answer": "No. At the start, the source is at +1. It adds two radians to the carrier angle, so the frozen result is sin(2), about 0.909. Source phase can move the beginning of the bent wave without moving the beginning of the carrier."
+    },
+    {
+      "title": "Does one carrier cycle restore the whole shape?",
+      "prompt": "Change the source ratio to 1.5. Use One carrier cycle later from an interior gold-point position. Compare the source as well as the carrier.",
+      "answer": "The carrier repeats after one cycle, but this source advances one and a half cycles. Its sign reverses there. Two carrier cycles give the source three complete cycles; that is a shared repeat for the steady bend."
+    },
+    {
+      "title": "Is a plotted maximum the loudest instant?",
+      "prompt": "Keep a bend, change its index, then open the comparison of the 401 plotted vertices. Read what the largest gap actually measures.",
+      "answer": "It measures the greatest absolute sample difference among those plotted vertices, choosing the earliest tied sample. It is not a continuous-curve maximum and not a loudness measurement. The instrument keeps a finite note envelope, but that does not make different timbres equally loud."
+    },
+    {
+      "title": "Can more bend still begin at zero?",
+      "prompt": "Compare the three same-speed depths with the source starting at zero. Inspect sample 0 before pressing Play.",
+      "answer": "At the beginning both carrier and source have zero phase, so the added bend is zero at that sample for every depth. The rest of the curve can change greatly. One shared starting value is not one shared waveform."
+    },
+    {
+      "title": "Is a half-turn start the same as a quarter turn?",
+      "prompt": "Compare the three starts of the three-halves-speed source at depth two. Read the gold point at sample 0.",
+      "answer": "The zero and half-turn starts put the source at mathematical zero there; a quarter turn puts it at +1 and the result at sin(2), about 0.909. Floating-point samples near zero need not be exactly zero. Matching one sample does not make the two full curves identical."
+    },
+    {
+      "title": "Does tripling the source triple the note envelope?",
+      "prompt": "Use one of the triple-speed depth studies, then inspect the sound settings before playing.",
+      "answer": "No. Ratio changes how the source advances inside the bend. These studies leave the finite note envelope unchanged. That is a timing and amplitude rule, not a promise that the changed timbre has equal perceived loudness."
+    }
+  ],
+  "facts": "Frozen result sin(theta+index*sin(ratio*theta+2\u03c0phase)); sin2=.9092974268256817. Ratio1.5 common period2carriercycles. Plot401vertices=400intervals.",
+  "palette": "#ede6d8/#202d39/#efa562/#64d9d0",
+  "files": [
+    "site/index.html",
+    "site/style.css"
+  ],
+  "root": "main",
+  "anchor": "footer",
+  "url": "https://bend-a-sine.ichabod-crane.net/",
+  "message": "six bend-a-sine questions keep their answers optional and leave the experiment unchanged",
+  "oldSummary": "Try three questions about a frozen bend",
+  "appendQuestions": [
+    {
+      "title": "Can more bend still begin at zero?",
+      "prompt": "Compare the three same-speed depths with the source starting at zero. Inspect sample 0 before pressing Play.",
+      "answer": "At the beginning both carrier and source have zero phase, so the added bend is zero at that sample for every depth. The rest of the curve can change greatly. One shared starting value is not one shared waveform."
+    },
+    {
+      "title": "Is a half-turn start the same as a quarter turn?",
+      "prompt": "Compare the three starts of the three-halves-speed source at depth two. Read the gold point at sample 0.",
+      "answer": "The zero and half-turn starts put the source at mathematical zero there; a quarter turn puts it at +1 and the result at sin(2), about 0.909. Floating-point samples near zero need not be exactly zero. Matching one sample does not make the two full curves identical."
+    },
+    {
+      "title": "Does tripling the source triple the note envelope?",
+      "prompt": "Use one of the triple-speed depth studies, then inspect the sound settings before playing.",
+      "answer": "No. Ratio changes how the source advances inside the bend. These studies leave the finite note envelope unchanged. That is a timing and amplitude rule, not a promise that the changed timbre has equal perceived loudness."
+    }
+  ]
+}
