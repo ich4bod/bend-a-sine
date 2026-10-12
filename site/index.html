@@ -6,7 +6,7 @@
   <meta name="description" content="One sine bends another. Change the bend before you hear it.">
   <title>Bend a sine</title>
   <link rel="stylesheet" href="/style.css?v=25">
-  <script type="module" src="/app.mjs?v=31"></script>
+  <script type="module" src="/app.mjs?v=32"></script>
 </head>
 <body>
   <main class="page">
@@ -187,6 +187,11 @@
               <option value="depth-five-four-two">Five-quarter source, index two</option>
               <option value="depth-five-four-four">Five-quarter source, index four</option>
             </optgroup>
+            <optgroup label="One opening, three source speeds">
+              <option value="opening-half-source">Positive opening, half-speed source</option>
+              <option value="opening-equal-source">Positive opening, equal-speed source</option>
+              <option value="opening-double-source">Positive opening, double-speed source</option>
+            </optgroup>
           </select>
         </div>
         <button id="bend-study-apply" type="button">Use this bend</button>
@@ -195,6 +200,7 @@
       <p id="bend-starting-direction-help">These three frozen waves share one source cycle per carrier cycle and index one. The source starts level, at its positive peak, or at its negative peak. Choosing or using one stays silent; Play is your separate choice.</p>
       <p id="bend-phase-study-help">These studies hold the source ratio and bend depth fixed. Only its phase changes. Choosing is silent; your kept bend stays put.</p>
       <p id="bend-rational-study-help">These sources complete five cycles in four carrier cycles, four in three, or two in three. Their note envelope stays the same; that does not promise equal perceived loudness.</p>
+      <p id="bend-source-speed-help">All three waves start the source at its positive peak with steady index two. Half-speed, equal-speed and double-speed sources share that opening sample, but do not keep the same shape. The finite envelope stays unchanged. Choosing is silent; Play is separate.</p>
       <p id="bend-depth-study-help">The source keeps five cycles for every four carrier cycles, starts at a quarter turn and keeps a steady index. Only the bend depth changes. The finite note envelope stays the same; that does not promise equal perceived loudness.</p>
     </details>
 

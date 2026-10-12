@@ -210,6 +210,14 @@ details p { margin: 8px 0; }
 .study-controls .control { min-width: min(100%, 240px); }
 #bend-studies select, #bend-studies button { min-height: 45px; }
 #bend-study-help, #bend-starting-direction-help, #bend-phase-study-help { margin: 8px 0 0; }
+#bend-source-speed-help {
+  min-width: 0;
+  max-width: 100%;
+  margin: 8px 0;
+  overflow-wrap: anywhere;
+  color: #64747d;
+  font: 16px/1.5 system-ui, sans-serif;
+}
 #bend-depth-study-help {
   min-width: 0;
   max-width: 100%;
