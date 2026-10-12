@@ -31,5 +31,5 @@
   ],
   "depends": "nothing",
   "message": "phases experiments keep their distinct rules and exact supplied choices",
-  "facts": "All ratio values are the existing native0.6666666666666666. All phase=.25, bend steady,moment0. Opening value sin(index): .479425538604203,.8414709848078965,.1411200080598672 respectively; larger index does not monotonically increase that sample. Exact native index options verified before posting."
+  "facts": "All ratio values are the existing native0.6666666666666666. All phase=.25, bend steady,moment0. Opening value sin(index): .479425538604203,.8414709848078965,.1411200080598672 respectively; larger index does not monotonically increase that sample. Native index slider min0/max6/step.25 admits all three supplied depths; ratio/phase native options were verified before posting."
 }
