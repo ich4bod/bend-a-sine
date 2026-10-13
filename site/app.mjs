@@ -96,6 +96,9 @@ const frozenStudies = new Map([
   ['triple-depth-0', { ratio: 3, phase: 0.25, index: 0.5, bend: 'steady', moment: 0 }],
   ['triple-depth-1', { ratio: 3, phase: 0.25, index: 1, bend: 'steady', moment: 0 }],
   ['triple-depth-2', { ratio: 3, phase: 0.25, index: 2, bend: 'steady', moment: 0 }],
+  ['phase-quarter-half', { ratio: 0.5, phase: 0.25, index: 2, bend: 'steady', moment: 0 }],
+  ['phase-quarter-one', { ratio: 1, phase: 0.25, index: 2, bend: 'steady', moment: 0 }],
+  ['phase-quarter-two', { ratio: 2, phase: 0.25, index: 2, bend: 'steady', moment: 0 }],
 ]);
 const selectedChoiceNotes = new Map([
   ['third-depth-half', 'About the selected choice: At a quarter-turn source start, index one-half opens at about 0.479. The source still takes three carrier cycles to make two cycles.'],
@@ -110,6 +113,9 @@ const selectedChoiceNotes = new Map([
   ['triple-depth-0', 'About the selected choice: The source advances 3 carrier-rate multiples and starts 0.25 cycles ahead. Steady bend depth is 0.5. Using stays silent; the finite envelope stays fixed, not perceived loudness.'],
   ['triple-depth-1', 'About the selected choice: The source advances 3 carrier-rate multiples and starts 0.25 cycles ahead. Steady bend depth is 1. Using stays silent; the finite envelope stays fixed, not perceived loudness.'],
   ['triple-depth-2', 'About the selected choice: The source advances 3 carrier-rate multiples and starts 0.25 cycles ahead. Steady bend depth is 2. Using stays silent; the finite envelope stays fixed, not perceived loudness.'],
+  ['phase-quarter-half', 'About the selected choice: The source starts at a quarter turn with index two and modulator/carrier one-half. Its first wave sample is sin(2), not a frequency measurement.'],
+  ['phase-quarter-one', 'About the selected choice: The same quarter-turn start and index two now use equal modulator and carrier frequencies. The opening sample remains sin(2); the rest of the wave need not match.'],
+  ['phase-quarter-two', 'About the selected choice: The modulator now runs twice as fast as the carrier, while the quarter-turn start and index two stay fixed. All three opening samples agree without making the full notes identical.'],
 ]);
 const repeatCyclesByRatio = new Map([
   [0.5, 2],
