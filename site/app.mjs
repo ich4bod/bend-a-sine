@@ -102,6 +102,9 @@ const frozenStudies = new Map([
   ['return-two-thirds', { ratio: 0.6666666666666666, phase: 0, index: 2, bend: 'steady', moment: 0 }],
   ['return-four-thirds', { ratio: 1.3333333333333333, phase: 0, index: 2, bend: 'steady', moment: 0 }],
   ['return-five-fourths', { ratio: 1.25, phase: 0, index: 2, bend: 'steady', moment: 0 }],
+  ['zero-half', { ratio: 0.5, phase: 0, index: 0, bend: 'steady', moment: 0 }],
+  ['zero-three-halves', { ratio: 1.5, phase: 0, index: 0, bend: 'steady', moment: 0 }],
+  ['zero-triple', { ratio: 3, phase: 0, index: 0, bend: 'steady', moment: 0 }],
 ]);
 const selectedChoiceNotes = new Map([
   ['third-depth-half', 'About the selected choice: At a quarter-turn source start, index one-half opens at about 0.479. The source still takes three carrier cycles to make two cycles.'],
@@ -122,6 +125,9 @@ const selectedChoiceNotes = new Map([
   ['return-two-thirds', 'About the selected choice: The two-thirds-speed source returns with the carrier after three carrier cycles. Both start at zero; this shared return does not make the intervening curve simple.'],
   ['return-four-thirds', 'About the selected choice: The four-thirds-speed source also returns after three carrier cycles, but makes four turns rather than two. Equal repeat spans do not mean equal curves.'],
   ['return-five-fourths', 'About the selected choice: The five-fourths-speed source returns after four carrier cycles. Depth stays two and the finite note envelope stays unchanged.'],
+  ['zero-half', 'About the selected choice: The source completes half a cycle per carrier cycle, but index zero contributes no phase bend. The resulting carrier is unchanged.'],
+  ['zero-three-halves', 'About the selected choice: The source completes three halves of a cycle per carrier cycle. At index zero its different shape still contributes no phase bend.'],
+  ['zero-triple', 'About the selected choice: The source completes three cycles per carrier cycle. Zero index keeps the resulting carrier identical, not the source wave.'],
 ]);
 const repeatCyclesByRatio = new Map([
   [0.5, 2],
