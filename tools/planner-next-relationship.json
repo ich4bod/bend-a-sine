@@ -1,0 +1,40 @@
+{
+  "phases": {
+    "mode": "phases",
+    "group": "Source returns across several carrier cycles",
+    "rows": [
+      [
+        "return-two-thirds",
+        "Two source turns in three carrier cycles",
+        0.6666666666666666,
+        0,
+        2
+      ],
+      [
+        "return-four-thirds",
+        "Four source turns in three carrier cycles",
+        1.3333333333333333,
+        0,
+        2
+      ],
+      [
+        "return-five-fourths",
+        "Five source turns in four carrier cycles",
+        1.25,
+        0,
+        2
+      ]
+    ],
+    "notes": [
+      "The two-thirds-speed source returns with the carrier after three carrier cycles. Both start at zero; this shared return does not make the intervening curve simple.",
+      "The four-thirds-speed source also returns after three carrier cycles, but makes four turns rather than two. Equal repeat spans do not mean equal curves.",
+      "The five-fourths-speed source returns after four carrier cycles. Depth stays two and the finite note envelope stays unchanged."
+    ],
+    "facts": "For ratio p/q in lowest terms, q carrier cycles return both phases:2/3 and4/3 haveq3;5/4 hasq4. Wave is sin(theta+2sin(ratio theta)), common initial0; no spectral equality or loudness claim.",
+    "dep": 935,
+    "picker": "bend-study",
+    "noteID": "choice-note-bend-a-sine",
+    "noteLead": "About the selected choice: ",
+    "message": "phases comparisons keep exact choices silent and reversible"
+  }
+}
