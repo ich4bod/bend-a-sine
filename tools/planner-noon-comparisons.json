@@ -1,0 +1,40 @@
+{
+  "phases": {
+    "mode": "phases",
+    "group": "Three sources with zero bend",
+    "rows": [
+      [
+        "zero-half",
+        "Half-speed source, zero index",
+        0.5,
+        0,
+        0
+      ],
+      [
+        "zero-three-halves",
+        "Three-halves source, zero index",
+        1.5,
+        0,
+        0
+      ],
+      [
+        "zero-triple",
+        "Triple source, zero index",
+        3,
+        0,
+        0
+      ]
+    ],
+    "notes": [
+      "The source completes half a cycle per carrier cycle, but index zero contributes no phase bend. The resulting carrier is unchanged.",
+      "The source completes three halves of a cycle per carrier cycle. At index zero its different shape still contributes no phase bend.",
+      "The source completes three cycles per carrier cycle. Zero index keeps the resulting carrier identical, not the source wave."
+    ],
+    "facts": "Steady source,phase0,moment0,index0. Result sin(t+0*sin(ratio*t))=sin(t) for all three ratios. Source waves differ; freeze/finite-envelope/pitch/volume unchanged.",
+    "dep": 935,
+    "picker": "bend-study",
+    "noteID": "choice-note-bend-a-sine",
+    "noteLead": "About the selected choice: ",
+    "message": "phases noon comparisons preserve exact choices silent selection and independent memory"
+  }
+}
