@@ -279,7 +279,7 @@
       <p id="bend-rule-expression">y(t) = sin(2π × 220 × t + I(t) × sin(2π × M × t + 2π × φ)). I(t) is the phase index at that instant in radians; M is the modulator frequency in hertz; φ is the source start in cycles.</p>
     </details>
     <details id="three-questions-bend-a-sine">
-      <summary>Try three questions about a frozen bend</summary>
+      <summary>Questions about a frozen bend</summary>
       <p>Use the existing settings and the gold point. Reading these answers is silent; hearing a note remains a separate press on Play.</p>
       <section>
         <h3>Must a sine begin at zero?</h3>
@@ -303,6 +303,30 @@
         <details>
           <summary>Read an answer</summary>
           <p>It measures the greatest absolute sample difference among those plotted vertices, choosing the earliest tied sample. It is not a continuous-curve maximum and not a loudness measurement. The instrument keeps a finite note envelope, but that does not make different timbres equally loud.</p>
+        </details>
+      </section>
+      <section>
+        <h3>Can more bend still begin at zero?</h3>
+        <p>Compare the three same-speed depths with the source starting at zero. Inspect sample 0 before pressing Play.</p>
+        <details>
+          <summary>Read an answer</summary>
+          <p>At the beginning both carrier and source have zero phase, so the added bend is zero at that sample for every depth. The rest of the curve can change greatly. One shared starting value is not one shared waveform.</p>
+        </details>
+      </section>
+      <section>
+        <h3>Is a half-turn start the same as a quarter turn?</h3>
+        <p>Compare the three starts of the three-halves-speed source at depth two. Read the gold point at sample 0.</p>
+        <details>
+          <summary>Read an answer</summary>
+          <p>The zero and half-turn starts put the source at mathematical zero there; a quarter turn puts it at +1 and the result at sin(2), about 0.909. Floating-point samples near zero need not be exactly zero. Matching one sample does not make the two full curves identical.</p>
+        </details>
+      </section>
+      <section>
+        <h3>Does tripling the source triple the note envelope?</h3>
+        <p>Use one of the triple-speed depth studies, then inspect the sound settings before playing.</p>
+        <details>
+          <summary>Read an answer</summary>
+          <p>No. Ratio changes how the source advances inside the bend. These studies leave the finite note envelope unchanged. That is a timing and amplitude rule, not a promise that the changed timbre has equal perceived loudness.</p>
         </details>
       </section>
     </details>
