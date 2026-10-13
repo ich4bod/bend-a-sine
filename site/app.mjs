@@ -105,6 +105,9 @@ const frozenStudies = new Map([
   ['zero-half', { ratio: 0.5, phase: 0, index: 0, bend: 'steady', moment: 0 }],
   ['zero-three-halves', { ratio: 1.5, phase: 0, index: 0, bend: 'steady', moment: 0 }],
   ['zero-triple', { ratio: 3, phase: 0, index: 0, bend: 'steady', moment: 0 }],
+  ['zero-slope-rise', { ratio: 1, phase: 0, index: 3, bend: 'steady', moment: 0 }],
+  ['zero-slope-fall', { ratio: 1, phase: 0.5, index: 3, bend: 'steady', moment: 0 }],
+  ['zero-slope-fast', { ratio: 2, phase: 0, index: 3, bend: 'steady', moment: 0 }],
 ]);
 const selectedChoiceNotes = new Map([
   ['third-depth-half', 'About the selected choice: At a quarter-turn source start, index one-half opens at about 0.479. The source still takes three carrier cycles to make two cycles.'],
@@ -128,6 +131,9 @@ const selectedChoiceNotes = new Map([
   ['zero-half', 'About the selected choice: The source completes half a cycle per carrier cycle, but index zero contributes no phase bend. The resulting carrier is unchanged.'],
   ['zero-three-halves', 'About the selected choice: The source completes three halves of a cycle per carrier cycle. At index zero its different shape still contributes no phase bend.'],
   ['zero-triple', 'About the selected choice: The source completes three cycles per carrier cycle. Zero index keeps the resulting carrier identical, not the source wave.'],
+  ['zero-slope-rise', 'About the selected choice: Source phase zero and a steady index of three open the bent wave at zero. The source initially rises; the derivative with respect to carrier phase is four at the opening.'],
+  ['zero-slope-fall', 'About the selected choice: Half a source cycle still opens the bent wave at zero, within floating-point error. The source initially falls; with index three the opening derivative is minus two.'],
+  ['zero-slope-fast', 'About the selected choice: The source completes two cycles per carrier cycle. Phase zero still opens at zero, but the opening derivative is seven. A shared opening is not a shared slope.'],
 ]);
 const repeatCyclesByRatio = new Map([
   [0.5, 2],

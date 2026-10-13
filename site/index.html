@@ -6,7 +6,7 @@
   <meta name="description" content="One sine bends another. Change the bend before you hear it.">
   <title>Bend a sine</title>
   <link rel="stylesheet" href="/style.css?v=30">
-  <script type="module" src="/app.mjs?v=39"></script>
+  <script type="module" src="/app.mjs?v=40"></script>
 </head>
 <body>
   <main class="page">
@@ -231,6 +231,11 @@
               <option value="zero-half">Half-speed source, zero index</option>
               <option value="zero-three-halves">Three-halves source, zero index</option>
               <option value="zero-triple">Triple source, zero index</option>
+            </optgroup>
+            <optgroup label="Zero opening, different slopes">
+              <option value="zero-slope-rise">One-to-one source starts rising</option>
+              <option value="zero-slope-fall">One-to-one source starts falling</option>
+              <option value="zero-slope-fast">Two-to-one source starts rising</option>
             </optgroup>
           </select>
         </div>
