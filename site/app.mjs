@@ -99,6 +99,9 @@ const frozenStudies = new Map([
   ['phase-quarter-half', { ratio: 0.5, phase: 0.25, index: 2, bend: 'steady', moment: 0 }],
   ['phase-quarter-one', { ratio: 1, phase: 0.25, index: 2, bend: 'steady', moment: 0 }],
   ['phase-quarter-two', { ratio: 2, phase: 0.25, index: 2, bend: 'steady', moment: 0 }],
+  ['return-two-thirds', { ratio: 0.6666666666666666, phase: 0, index: 2, bend: 'steady', moment: 0 }],
+  ['return-four-thirds', { ratio: 1.3333333333333333, phase: 0, index: 2, bend: 'steady', moment: 0 }],
+  ['return-five-fourths', { ratio: 1.25, phase: 0, index: 2, bend: 'steady', moment: 0 }],
 ]);
 const selectedChoiceNotes = new Map([
   ['third-depth-half', 'About the selected choice: At a quarter-turn source start, index one-half opens at about 0.479. The source still takes three carrier cycles to make two cycles.'],
@@ -116,6 +119,9 @@ const selectedChoiceNotes = new Map([
   ['phase-quarter-half', 'About the selected choice: The source starts at a quarter turn with index two and modulator/carrier one-half. Its first wave sample is sin(2), not a frequency measurement.'],
   ['phase-quarter-one', 'About the selected choice: The same quarter-turn start and index two now use equal modulator and carrier frequencies. The opening sample remains sin(2); the rest of the wave need not match.'],
   ['phase-quarter-two', 'About the selected choice: The modulator now runs twice as fast as the carrier, while the quarter-turn start and index two stay fixed. All three opening samples agree without making the full notes identical.'],
+  ['return-two-thirds', 'About the selected choice: The two-thirds-speed source returns with the carrier after three carrier cycles. Both start at zero; this shared return does not make the intervening curve simple.'],
+  ['return-four-thirds', 'About the selected choice: The four-thirds-speed source also returns after three carrier cycles, but makes four turns rather than two. Equal repeat spans do not mean equal curves.'],
+  ['return-five-fourths', 'About the selected choice: The five-fourths-speed source returns after four carrier cycles. Depth stays two and the finite note envelope stays unchanged.'],
 ]);
 const repeatCyclesByRatio = new Map([
   [0.5, 2],
