@@ -67,32 +67,6 @@
     </section>
     <p id="bend-values" class="values">Carrier: 220 Hz · modulator: 220 Hz · index: 2.00.</p>
     <p id="bend-index-here">Index here: 2.00 at 0.00 seconds.</p>
-    <section id="bend-live-sound" class="sound-section" aria-labelledby="bend-sound-heading">
-      <h2 id="bend-sound-heading">Hear the bend</h2>
-      <div class="sound-controls">
-        <button id="bend-listen" type="button">Hear this bend</button>
-        <button id="bend-listen-frozen" type="button">Hear the frozen instant</button>
-        <button id="bend-listen-carrier" type="button">Hear plain carrier</button>
-        <button id="bend-listen-modulator" type="button">Hear bending sine</button>
-        <button id="bend-stop" type="button" disabled>Stop sound</button>
-      </div>
-      <details id="bend-comparisons">
-        <summary>Compare two notes</summary>
-        <button id="bend-compare-plain" type="button">Hear plain, then this bend</button>
-        <p id="bend-compare-plain-help">First the plain carrier, then a short silence, then this bend. Both notes use the same loudness envelope.</p>
-        <button id="bend-compare-frozen" type="button">Hear evolving, then frozen</button>
-        <p id="bend-frozen-pair-help">The changing note, then the index held here: two 0.8-second notes with 0.25 seconds of silence between. Stop ends both; no bend is kept or replaced.</p>
-      </details>
-      <p id="bend-sound-status">Ready.</p>
-      <p id="bend-sound-help">Each press plays one 0.8-second note. Changing a control stops it; changing a control never plays it. Start with your volume low.</p>
-      <details id="bend-sound-guide">
-        <summary>What these notes compare</summary>
-        <p id="bend-sources-help">These are separate notes, not a mixture. The bending sine changes an angle in the resulting sound.</p>
-        <p id="bend-fall-help">A falling bend reaches zero index after 0.60 seconds; a rising bend reaches the chosen index then. This plot freezes that instant; the heard note changes continuously. The amplitude envelope is unchanged.</p>
-      </details>
-      <p id="bend-frozen-help">Hold the index shown here for one 0.8-second note. The evolving bend and kept comparison stay unchanged.</p>
-    </section>
-
     <section class="plot-section">
       <h2>The bending sine</h2>
       <div class="plot-panel">
@@ -130,6 +104,32 @@
         <p id="bend-repeat-help">The mark shows one full repeat of this frozen shape. During a falling bend, the heard note keeps changing instead.</p>
       </details>
     </section>
+    <section id="bend-live-sound" class="sound-section" aria-labelledby="bend-sound-heading">
+      <h2 id="bend-sound-heading">Hear the bend</h2>
+      <div class="sound-controls">
+        <button id="bend-listen" type="button">Hear this bend</button>
+        <button id="bend-listen-frozen" type="button">Hear the frozen instant</button>
+        <button id="bend-listen-carrier" type="button">Hear plain carrier</button>
+        <button id="bend-listen-modulator" type="button">Hear bending sine</button>
+        <button id="bend-stop" type="button" disabled>Stop sound</button>
+      </div>
+      <details id="bend-comparisons">
+        <summary>Compare two notes</summary>
+        <button id="bend-compare-plain" type="button">Hear plain, then this bend</button>
+        <p id="bend-compare-plain-help">First the plain carrier, then a short silence, then this bend. Both notes use the same loudness envelope.</p>
+        <button id="bend-compare-frozen" type="button">Hear evolving, then frozen</button>
+        <p id="bend-frozen-pair-help">The changing note, then the index held here: two 0.8-second notes with 0.25 seconds of silence between. Stop ends both; no bend is kept or replaced.</p>
+      </details>
+      <p id="bend-sound-status">Ready.</p>
+      <p id="bend-sound-help">Each press plays one 0.8-second note. Changing a control stops it; changing a control never plays it. Start with your volume low.</p>
+      <details id="bend-sound-guide">
+        <summary>What these notes compare</summary>
+        <p id="bend-sources-help">These are separate notes, not a mixture. The bending sine changes an angle in the resulting sound.</p>
+        <p id="bend-fall-help">A falling bend reaches zero index after 0.60 seconds; a rising bend reaches the chosen index then. This plot freezes that instant; the heard note changes continuously. The amplitude envelope is unchanged.</p>
+      </details>
+      <p id="bend-frozen-help">Hold the index shown here for one 0.8-second note. The evolving bend and kept comparison stay unchanged.</p>
+    </section>
+
 
     <details id="bend-phase-inspector">
       <summary>Inspect one point in both waves</summary>
