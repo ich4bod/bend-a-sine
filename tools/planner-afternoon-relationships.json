@@ -1,0 +1,43 @@
+{
+  "phases": {
+    "mode": "phases",
+    "picker": "bend-study",
+    "noteID": "choice-note-bend-a-sine",
+    "noteLead": "About the selected choice: ",
+    "slug": "bend-a-sine",
+    "lane": 16,
+    "title": "Bend a sine — Start opposite source slopes at a zero opening",
+    "group": "Zero opening, different slopes",
+    "rows": [
+      [
+        "zero-slope-rise",
+        "One-to-one source starts rising",
+        1,
+        0,
+        3
+      ],
+      [
+        "zero-slope-fall",
+        "One-to-one source starts falling",
+        1,
+        0.5,
+        3
+      ],
+      [
+        "zero-slope-fast",
+        "Two-to-one source starts rising",
+        2,
+        0,
+        3
+      ]
+    ],
+    "notes": [
+      "Source phase zero and a steady index of three open the bent wave at zero. The source initially rises; the derivative with respect to carrier phase is four at the opening.",
+      "Half a source cycle still opens the bent wave at zero, within floating-point error. The source initially falls; with index three the opening derivative is minus two.",
+      "The source completes two cycles per carrier cycle. Phase zero still opens at zero, but the opening derivative is seven. A shared opening is not a shared slope."
+    ],
+    "facts": "Toy y(theta)=sin(theta+I*sin(q*theta+2*pi*p)). Here I=3, theta0=0, p=0/.5/0 and q=1/1/2. y0=0/sin(3*sin(pi))/0; numerical middle is3.6739403974420594e-16. dy/dtheta at0=cos(I*sin(2*pi*p))*(1+I*q*cos(2*pi*p))=4,-2,7. Derivatives are per radian of carrier phase, not voltage/time measurements. Existing native ratios1/2, phase0/.5, index3 exist; apply steady,moment0. Preserve finite envelope.",
+    "dep": 957,
+    "message": "phases afternoon relationships preserve exact choices and independent memory"
+  }
+}
